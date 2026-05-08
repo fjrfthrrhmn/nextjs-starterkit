@@ -2,288 +2,340 @@
 
 ## Project Overview
 
-Bulletproof React is a scalable React application architecture that provides opinionated guidelines and best practices for building production-ready React applications. The project includes three different implementations:
+**FilmGueh** is a movie tracking web application that helps users record, manage, and filter movies they have watched or want to watch. It uses the TMDB API for movie data and stores user data in browser LocalStorage (no backend, no authentication).
 
-- **React Vite**: Modern Vite-based React application
-- **Next.js App Router**: Next.js 13+ with App Router
-- **Next.js Pages**: Traditional Next.js with Pages Router
+Built on the **Bulletproof React** architecture — a scalable Next.js application following a feature-based structure with strong conventions for maintainability.
 
 ### Application Domain
-The demo application is a team collaboration platform where users can:
-- Create and join teams
-- Start discussions within teams  
-- Comment on discussions
-- Manage user roles (ADMIN/USER permissions)
 
-**Live Demo**: [https://bulletproof-react-app.netlify.app](https://bulletproof-react-app.netlify.app)
+- Users search for movies via the TMDB API
+- Users add movies to a personal tracker
+- Movies can be categorized (Watched / Plan to Watch / Dropped)
+- Users can filter by category and genre
+- Users can edit entries (category, rating, notes) and delete them
+- Data persists in LocalStorage
 
 ## Setup Commands
 
 ```bash
-# Navigate to desired app
-cd apps/react-vite        # or apps/nextjs-app or apps/nextjs-pages
-
 # Install dependencies
-yarn install
+npm install
 
 # Start development server
-yarn dev
+npm run dev
 
 # Run tests
-yarn test
-
-# Run e2e tests
-yarn test:e2e
+npm test
 
 # Lint code
-yarn lint
+npm run lint
+
+# Type check
+npm run check-types
 
 # Build for production
-yarn build
+npm run build
 ```
 
 ## Project Structure
 
-The codebase follows a feature-based architecture organized as follows:
-
 ```
 src/
-├── app/              # Application layer (routes, providers, router)
+├── app/              # Application layer (pages, layouts, providers)
+│   ├── layout.tsx    # Root layout
+│   ├── page.tsx      # Home/landing page
+│   ├── not-found.tsx # 404 page
+│   └── provider.tsx  # Global providers (QueryClient, ErrorBoundary)
 ├── components/       # Shared UI components
-├── config/          # Global configurations and env variables
-├── features/        # Feature-based modules (auth, discussions, comments, etc.)
-├── hooks/           # Shared React hooks
-├── lib/             # Preconfigured libraries (react-query, auth, etc.)
-├── testing/         # Test utilities and mocks
-├── types/           # Shared TypeScript types
-└── utils/           # Shared utility functions
+│   ├── errors/       # Error boundary fallbacks
+│   ├── layouts/      # Shared layout components
+│   └── ui/           # Design system components
+│       ├── button/   # Button component (variants: default, outline, destructive, etc.)
+│       └── form/     # Form components (Form, Input, Textarea, Select, Switch, Label, FieldWrapper, Error)
+├── config/           # Global configs and env variables
+│   ├── env.ts        # Zod-validated env vars
+│   └── paths.ts      # Route path constants
+├── features/         # Feature-based modules (add features here)
+│   └── .gitkeep      # Placeholder — create feature folders as needed
+├── hooks/            # Shared React hooks
+│   └── use-disclosure.ts  # Open/close toggle hook
+├── lib/              # Preconfigured libraries
+│   ├── api-client.ts # Fetch-based API client with cookie forwarding
+│   └── react-query.ts # TanStack Query config defaults
+├── testing/          # Test utilities
+│   ├── setup-tests.ts # Vitest setup (MSW mock for next/navigation)
+│   └── test-utils.tsx # Custom render with AppProvider wrapper
+├── types/            # Shared TypeScript types
+│   └── api.ts        # BaseEntity, Entity<T>, Meta
+├── utils/            # Shared utility functions
+│   ├── cn.ts         # className merge utility (clsx + tailwind-merge)
+│   └── format.ts     # Date formatting (dayjs)
+└── styles/
+    └── globals.css   # Tailwind imports + CSS variables
 ```
 
 ### Feature Structure
+
 Each feature should be self-contained:
 
 ```
-src/features/awesome-feature/
-├── api/         # API calls and hooks for this feature
-├── components/  # Feature-specific components  
+src/features/movies/
+├── api/         # API calls and hooks (TMDB, LocalStorage operations)
+├── components/  # Feature-specific components
 ├── hooks/       # Feature-specific hooks
-├── stores/      # Feature-specific state
-├── types/       # Feature-specific types
+├── stores/      # Feature-specific state (Zustand stores)
+├── types/       # Feature-specific TypeScript types
 └── utils/       # Feature-specific utilities
 ```
 
 ## Code Standards
 
 ### TypeScript
-- **Strict mode enabled** - All TypeScript strict checks are enforced
-- **Type-first approach** - Define types before implementation
-- **Absolute imports** - Use `@/` prefix for all src imports (e.g., `@/components/ui/button`)
+- **Strict mode enabled** — all strict checks are enforced
+- **Type-first approach** — define types before implementation
+- **Absolute imports** — use `@/` prefix for all src imports (e.g., `@/components/ui/button`)
+- **No `any`** — avoid unless absolutely necessary; prefer `unknown` + type guards
 
-### Code Style
-- **ESLint + Prettier** configured for consistent formatting
-- **Kebab-case** for file and folder names
-- **PascalCase** for React components
-- **camelCase** for functions and variables
+### Code Style (enforced by ESLint + Prettier)
+- **Kebab-case** for file and folder names (e.g., `movie-card.tsx`)
+- **PascalCase** for React components (e.g., `MovieCard`)
+- **camelCase** for functions and variables (e.g., `fetchMovies`, `isLoading`)
+- **Single quotes** for strings
+- **Trailing commas** everywhere
+- **2-space indentation**
+- **LF line endings** (via Prettier `endOfLine: auto`)
+- **Alphabetized imports** with newlines between groups
 
 ### Architecture Rules
-- **No cross-feature imports** - Features should not import from each other
-- **Unidirectional flow** - Code flows: shared → features → app
-- **Colocation** - Keep related code as close as possible to where it's used
+- **No cross-feature imports** — features should not import from each other
+- **Unidirectional flow** — `utils/ → lib/ → components/ → features/ → app/`
+- **Colocation** — keep related code as close as possible to where it's used
+- **Single responsibility** — each file/module should have one clear purpose
 
 ## Component Guidelines
 
 ### Best Practices
-- **Composition over props** - Use children/slots instead of many props
-- **Single responsibility** - Each component should have one clear purpose  
-- **Extract render functions** - Move complex JSX into separate components
-- **Limit prop count** - Consider composition if accepting too many props
+- **Composition over props** — use `children`/slots instead of many props
+- **Extract render functions** — move complex JSX into separate components
+- **Limit prop count** — if a component accepts too many props, split it or use composition
 
 ### Styling
 - **Tailwind CSS** is the primary styling solution
-- **Headless UI components** using Radix UI primitives
-- **ShadCN/UI pattern** - Components are copied into codebase, not installed as packages
+- **ShadCN/UI pattern** — components are copied into codebase, not installed as packages
+- **CSS variables** in `globals.css` for theme tokens (colors, border-radius, etc.)
+
+### Available UI Components
+
+#### Button (`@/components/ui/button`)
+```tsx
+import { Button } from '@/components/ui/button';
+
+<Button variant="default|outline|destructive|secondary|ghost|link" size="default|sm|lg|icon" icon={<LucideIcon />}>
+  Click me
+</Button>
+```
+
+#### Form (`@/components/ui/form`)
+```tsx
+import { Form, Input, Textarea, Select, Switch, Label, FieldWrapper, Error } from '@/components/ui/form';
+
+<Form submitHandler={handleSubmit} schema={validationSchema}>
+  <Input label="Title" name="title" placeholder="Movie title" />
+  <Select label="Category" name="category" options={[...]} />
+  <Textarea label="Notes" name="notes" />
+  <Switch label="Watched" name="watched" />
+</Form>
+```
 
 ## State Management Strategy
 
 ### Component State
-- Use `useState` for simple independent state
-- Use `useReducer` for complex state with multiple related updates
+- `useState` for simple independent state
+- `useDisclosure` hook (`@/hooks/use-disclosure`) for open/close UI state (modals, drawers)
 
-### Application State  
-- **Zustand** for global application state (modals, notifications, themes)
-- Keep state as close to usage as possible
-- Avoid premature globalization
+### Application State
+- **Zustand** for global client state (modals, filters, theme)
+- Keep state as close to usage as possible — avoid premature globalization
 
-### Server State
-- **React Query (TanStack Query)** for all server state management
-- **MSW (Mock Service Worker)** for API mocking during development
+### Server/External State
+- **TanStack Query** for TMDB API data fetching with caching
 - Separate fetcher functions from hooks
 
 ### Form State
 - **React Hook Form** for form management
-- **Zod** for form validation schemas
-- Create reusable Form and Input components
+- **Zod** for validation schemas
+- Use the `Form` component abstraction
+
+### Persistent State
+- **LocalStorage** for movie tracker data (no backend)
+- Read/write via utility functions or a Zustand store with persist middleware
 
 ## API Layer
 
 ### Structure
-Each API endpoint should have:
-1. **Types & validation schemas** for request/response
-2. **Fetcher function** using configured API client
+Each API endpoint should follow a consistent pattern:
+
+1. **Types & validation schemas** for request/response data
+2. **Fetcher function** using the configured API client (`@/lib/api-client`)
 3. **React Query hook** for data fetching/caching
 
 ### Example Pattern
 ```typescript
-// api/get-discussions.ts
-export const getDiscussions = (params: GetDiscussionsParams): Promise<Discussion[]> => {
-  return api.get('/discussions', { params });
+// features/movies/api/search-movies.ts
+import { z } from 'zod';
+import { useQuery } from '@tanstack/react-query';
+import { api } from '@/lib/api-client';
+
+export const searchMoviesInputSchema = z.object({
+  query: z.string().min(1),
+  page: z.number().optional(),
+});
+
+export type SearchMoviesInput = z.infer<typeof searchMoviesInputSchema>;
+
+export const searchMovies = ({ query, page = 1 }: SearchMoviesInput): Promise<Movie[]> => {
+  return api.get('/search/movie', { params: { query, page } });
 };
 
-export const useDiscussions = (params: GetDiscussionsParams) => {
+export const useSearchMovies = (input: SearchMoviesInput) => {
   return useQuery({
-    queryKey: ['discussions', params],
-    queryFn: () => getDiscussions(params),
+    queryKey: ['movies', 'search', input],
+    queryFn: () => searchMovies(input),
+    enabled: input.query.length > 0,
   });
 };
 ```
 
+### API Client (`@/lib/api-client`)
+- Pre-configured fetch-based client with:
+  - Base URL from `NEXT_PUBLIC_API_URL`
+  - Cookie forwarding for SSR
+  - JSON content type by default
+  - Auto-sends `credentials: 'include'`
+  - Error throwing on non-OK responses
+- Methods: `api.get()`, `api.post()`, `api.put()`, `api.patch()`, `api.delete()`
+
 ## Testing Strategy
 
 ### Testing Pyramid
-1. **Integration Tests** (primary focus) - Test feature workflows
-2. **Unit Tests** - Test shared utilities and complex logic
-3. **E2E Tests** - Test critical user journeys
+1. **Integration Tests** (primary focus) — test feature workflows
+2. **Unit Tests** — test shared utilities and complex logic
 
 ### Tools
-- **Vitest** - Test runner (Jest-compatible but faster)
-- **Testing Library** - Component testing utilities
-- **Playwright** - E2E testing framework
-- **MSW** - API mocking for tests
+- **Vitest** — test runner (globals enabled: `vi`, `describe`, `it`, `expect`)
+- **Testing Library** — `@testing-library/react`, `@testing-library/user-event`, `@testing-library/jest-dom`
 
-### Testing Patterns
+### Patterns
 - Test behavior, not implementation details
-- Use real HTTP requests with MSW instead of mocking fetch
-- Focus on user interactions and outcomes
+- Use `renderApp` utility for wrapped component rendering
+- Mock `next/navigation` via the global setup in `setup-tests.ts`
+- Focus on user interactions and rendered output
 
-## Security Considerations
+```tsx
+import { renderApp, screen, userEvent } from '@/testing/test-utils';
 
-### Authentication
-- **JWT tokens** stored in HttpOnly cookies (preferred) or localStorage
-- **React Query Auth** for user state management
-- Automatic token refresh handling
-
-### Authorization
-- **RBAC** (Role-Based Access Control) for basic permissions
-- **PBAC** (Permission-Based Access Control) for granular control
-- Client-side authorization for UX (always validate server-side)
-
-### XSS Prevention
-- **Sanitize all user inputs** before rendering
-- Use DOMPurify for HTML content sanitization
-- Validate and escape data at boundaries
+it('renders the form and submits', async () => {
+  const { user } = renderApp(<MyForm />);
+  await user.type(screen.getByLabelText('Title'), 'Inception');
+  await user.click(screen.getByRole('button', { name: /save/i }));
+  expect(screen.getByText(/success/i)).toBeInTheDocument();
+});
+```
 
 ## Performance Optimization
 
-### Code Splitting
-- **Route-level splitting** - Lazy load pages/routes
-- Avoid excessive splitting (balance requests vs. bundle size)
-
 ### React Optimizations
-- **Children prop pattern** - Prevent unnecessary re-renders
-- **State colocation** - Keep state close to where it's used
-- **State initializer functions** - For expensive initial computations
+- **Children prop pattern** — prevent unnecessary re-renders
+- **State colocation** — keep state close to where it's used
+- **State initializer functions** — for expensive initial computations (`useState(() => expensive())`)
 
 ### Image Optimization
+- Use Next.js `Image` component with TMDB image URLs
 - Lazy loading for images outside viewport
-- Modern formats (WebP) with fallbacks
-- Responsive images using srcset
+- Configure remote patterns in `next.config.mjs`
 
 ## Error Handling
 
 ### API Errors
-- Global error interceptor in API client
-- Automatic error notifications via toast system
-- Automatic token refresh on 401 errors
+- Global error handling in `api-client.ts` — throws `Error` with server message
 
 ### Application Errors
 - **Error Boundaries** at feature level (not just app level)
-- **Sentry** integration for production error tracking
+- `MainErrorFallback` component for top-level errors
 - Graceful fallbacks for broken components
 
 ## Build and Deployment
 
 ### Development
-- **Vite** for fast development builds and HMR
-- **TypeScript** strict mode for compile-time safety
+- **Next.js 14** with App Router
+- **TypeScript strict mode** for compile-time safety
 - **ESLint + Prettier** for code quality
+- **HMR** via Next.js dev server
 
 ### Production
-- Deploy to CDN platforms: **Vercel**, **Netlify**, or **AWS CloudFront**
-- Source maps uploaded to Sentry for error tracking
-- Environment-specific configuration via env files
-
-## File Naming Conventions
-
-- **Components**: `kebab-case.tsx` (e.g., `user-profile.tsx`)
-- **Hooks**: `use-kebab-case.ts` (e.g., `use-discussions.ts`)  
-- **Utilities**: `kebab-case.ts` (e.g., `format-date.ts`)
-- **Types**: `kebab-case.ts` (e.g., `api-types.ts`)
-- **Folders**: `kebab-case` throughout
-
-## Development Workflow
-
-### Git Hooks (Husky)
-- **Pre-commit**: ESLint, Prettier, TypeScript check
-- **Pre-push**: Run test suite
-- Ensure all checks pass before allowing commits
-
-### Code Generation
-- **Plop.js** generators for consistent component creation
-- Templates include component, stories, and test files
-- Maintains consistent structure across team
+- Static site generation (SSG) where possible
+- Deploy to **Vercel**, **Netlify**, or **Cloudflare Pages**
+- Environment variables via `.env` files
 
 ## Key Libraries
 
 ### Core
-- **React 18** with concurrent features
-- **TypeScript** in strict mode
-- **Vite** or **Next.js** for build tooling
+- **Next.js 14** (App Router)
+- **React 18**
+- **TypeScript** (strict mode)
 
-### UI & Styling  
-- **Tailwind CSS** for styling
-- **Radix UI** for headless components
-- **Lucide React** for icons
+### UI & Styling
+- **Tailwind CSS** — utility-first styling
+- **Radix UI** — `@radix-ui/react-label`, `@radix-ui/react-slot`, `@radix-ui/react-switch`
+- **Lucide React** — icons
+- **class-variance-authority** + **tailwind-merge** + **clsx** — component variants and class merging
 
 ### Data & State
-- **TanStack Query** for server state
-- **Zustand** for client state
-- **React Hook Form + Zod** for forms
+- **TanStack Query** — server state (TMDB API)
+- **Zustand** — client state (filters, UI state)
+- **React Hook Form + Zod** — forms
+- **dayjs** — date formatting
 
-### Testing & Development
-- **Vitest** for unit/integration tests
-- **Playwright** for E2E tests
-- **MSW** for API mocking
-- **Storybook** for component development
+### Testing
+- **Vitest** — test runner
+- **Testing Library** — component testing
+
+## File Naming Conventions
+
+- **Components**: `kebab-case.tsx` (e.g., `movie-card.tsx`)
+- **Hooks**: `use-kebab-case.ts` (e.g., `use-movies.ts`)
+- **Stores**: `kebab-case.ts` (e.g., `movie-store.ts`)
+- **Utilities**: `kebab-case.ts` (e.g., `format-date.ts`)
+- **Types**: `kebab-case.ts` (e.g., `api-types.ts`)
+- **Folders**: `kebab-case` throughout
 
 ## Common Patterns
 
 ### Feature Development
-1. Start with API types and validation schemas
-2. Create API fetcher functions and React Query hooks
-3. Build UI components with proper TypeScript integration
-4. Add integration tests covering the feature workflow
-5. Update routing and navigation as needed
+1. Start with API types and validation schemas (Zod)
+2. Create API/fetcher functions
+3. Create React Query hooks for TMDB data and LocalStorage operations
+4. Build Zustand stores for persistent UI state
+5. Build UI components with proper TypeScript integration
+6. Add tests covering the feature workflow
 
 ### Component Creation
-1. Use Plop generator: `yarn generate:component`
-2. Follow composition patterns over prop drilling
-3. Add Storybook stories for complex components
-4. Include unit tests for components with logic
+1. Create a folder under the appropriate feature: `src/features/<feature>/components/<kebab-name>/`
+2. Use composition patterns over prop drilling
+3. Include integration tests for components with logic
 
-### State Management
+### LocalStorage Persistence
+1. Define types for the data model
+2. Create a Zustand store with `persist` middleware or plain read/write utilities
+3. Create React hooks that read/write to the store
+4. Components consume the hooks — never access LocalStorage directly
+
+### State Management (decision tree)
 1. Start with local component state
 2. Lift to parent component if needed by siblings
-3. Move to global state only if needed across features
-4. Use React Query for all server state
+3. Use Zustand if needed across features or for persisted data
+4. Use React Query for all TMDB API data
 
-This architecture prioritizes developer experience, maintainability, and scalability while following React and JavaScript best practices.
+---
+
+This architecture prioritizes developer experience, maintainability, and scalability while following React and JavaScript best practices. Reference the `.docs/` folder for detailed guides on specific topics.

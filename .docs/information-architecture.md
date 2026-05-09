@@ -10,11 +10,11 @@
 
 **Core Concepts:**
 
-| Term | Definition |
-|------|-----------|
-| **Movie** | A film entity from an external API (TMDB/OMDb) |
-| **Entry** | A movie the user has added to their personal tracker with category, rating, and notes |
-| **Collection** | The user's full set of entries stored in LocalStorage |
+| Term           | Definition                                                                            |
+| -------------- | ------------------------------------------------------------------------------------- |
+| **Movie**      | A film entity from an external API (TMDB/OMDb)                                        |
+| **Entry**      | A movie the user has added to their personal tracker with category, rating, and notes |
+| **Collection** | The user's full set of entries stored in LocalStorage                                 |
 
 **Entry Categories:** `Watched` | `Plan to Watch` | `Dropped`
 
@@ -53,8 +53,11 @@ export const paths = {
 ### Navigation Flow
 
 ```
-Home (/) ──CTA──> Movies (/movies) ──CTA──> Search (/search?q=)
-                     │                              │
+Home (/) ──search/explore──> Search (/search?q=)
+Home (/) ──movie card click──> /search?q=<title>
+Home (/) ──CTA──> Movies (/movies)
+Movies (/movies) ──search──> Search (/search?q=)
+                     │                               │
                      │ (click card)                  │ (click "Add")
                      ▼                              ▼
                   EditDialog                    → redirect to /movies
@@ -66,53 +69,39 @@ Home (/) ──CTA──> Movies (/movies) ──CTA──> Search (/search?q=)
 
 ### 3.1 Home Page (`/`)
 
-| | |
-|---|---|
-| **Purpose** | Welcome screen, entry point to the app |
-| **Content** | App logo/name, tagline, CTA button to `/movies` |
-| **States** | Static — no data dependencies |
-| **Components** | `Button`, optional `HeroSection` |
+|                |                                                                                    |
+| -------------- | ---------------------------------------------------------------------------------- |
+| **Purpose**    | Interactive discovery surface, entry point to the app                              |
+| **Content**    | Headline, subheadline, search bar, category tags, trending/explore movie row       |
+| **States**     | Idle (default), Focused (search active), Filtered (by category), Search (by query) |
+| **Components** | `HeroSection` (search bar, category chips, `HeroMovieCard`, vertical scroll row)   |
 
 ### 3.2 Movies Page (`/movies`)
 
-| | |
-|---|---|
-| **Purpose** | View, filter, sort, and manage saved movie entries |
-| **URL Params** | `?category=` `?genre=` `?q=` `?sort=` |
-| **States** | Empty collection | Populated | Filtered (empty result) | Error (corrupt data) |
+|                |                                                                                 |
+| -------------- | ------------------------------------------------------------------------------- | --------- | ----------------------- | -------------------- |
+| **Purpose**    | View, filter, sort, and manage saved movie entries                              |
+| **URL Params** | `?category=` `?genre=` `?q=` `?sort=`                                           |
+| **States**     | Empty collection                                                                | Populated | Filtered (empty result) | Error (corrupt data) |
 | **Components** | `StatsPanel`, `FilterBar`, `MovieGrid`, `MovieCard`, `EditDialog`, `EmptyState` |
-
-```
-┌─────────────────────────────────────────┐
-│  StatsPanel: 12 Watched · 5 Plan · 3 Dropped
-├──────────────┬──────────────────────────┤
-│  FilterBar   │  MovieGrid               │
-│  ─────────── │  ┌─────┐ ┌─────┐ ┌─────┐│
-│  Category ▼  │  │Card │ │Card │ │Card ││
-│  Genre ▼     │  └─────┘ └─────┘ └─────┘│
-│  Sort ▼      │  ┌─────┐ ┌─────┐        │
-│              │  │Card │ │Card │        │
-│              │  └─────┘ └─────┘        │
-└──────────────┴──────────────────────────┘
-```
 
 ### 3.3 Search Page (`/search?q=`)
 
-| | |
-|---|---|
-| **Purpose** | Query external API, browse results, add to collection |
-| **URL Params** | `?q=` search query |
-| **States** | Initial (no query) | Loading | Results | No results | API error | Duplicate found |
+|                |                                                                                      |
+| -------------- | ------------------------------------------------------------------------------------ | ------- | ------- | ---------- | --------- | --------------- |
+| **Purpose**    | Query external API, browse results, add to collection                                |
+| **URL Params** | `?q=` search query                                                                   |
+| **States**     | Initial (no query)                                                                   | Loading | Results | No results | API error | Duplicate found |
 | **Components** | `SearchInput`, `SearchResults`, `MovieCard`, `AddButton`, `EmptyState`, `ErrorState` |
 
 ### 3.4 EditDialog (overlay on `/movies`)
 
-| | |
-|---|---|
-| **Purpose** | Edit category, rating, and notes for a saved entry |
-| **Trigger** | Click edit icon on a MovieCard |
+|                |                                                                                                       |
+| -------------- | ----------------------------------------------------------------------------------------------------- | ------ | ---------------- |
+| **Purpose**    | Edit category, rating, and notes for a saved entry                                                    |
+| **Trigger**    | Click edit icon on a MovieCard                                                                        |
 | **Components** | `Dialog` (if available) or modal overlay, `Form` with `Select` (category, rating), `Textarea` (notes) |
-| **States** | Open (pre-filled) | Saving | Close on success |
+| **States**     | Open (pre-filled)                                                                                     | Saving | Close on success |
 
 ---
 
@@ -125,7 +114,14 @@ AppProvider
 └── Layout
     └── Page
         ├── HomePage
-        │   └── Button (CTA → /movies)
+        │   ├── HeroSection (Interactive Discovery)
+        │   │   ├── SearchInput (with Cmd+K shortcut)
+        │   │   ├── CategoryChips (Action, Komedi, Horror, etc.)
+        │   │   ├── HeroMovieCard[] (horizontal scroll)
+        │   │   │   └── Poster Image (lazy loaded)
+        │   │   │   └── Title, year, genre, rating
+        │   │   └── EmptyState (no results)
+        │   └── FeatureCards (bento grid)
         │
         ├── MoviesPage
         │   ├── StatsPanel
@@ -159,19 +155,21 @@ AppProvider
 
 ### 4.2 Component Responsibilities
 
-| Component | Responsibility | Data Source |
-|---|---|---|
-| `StatsPanel` | Show counts per category, total entries | Derived from store |
-| `FilterBar` | Category filter, genre filter, sort control | URL params ↔ local state |
-| `CategoryFilter` | Select dropdown for Watched / Plan / Dropped / All | URL param |
-| `GenreFilter` | Multi-select or dropdown from available genres | URL param |
-| `MovieGrid` | Render filtered/sorted list of MovieCards | Props (computed list) |
-| `MovieCard` | Display poster, title, year, badge, rating, actions | Props (pure) |
-| `EditDialog` | Modal form for editing category, rating, notes | Zustand (open/close) + form |
-| `SearchInput` | Debounced text input, syncs with URL `?q=` | URL param |
-| `SearchResults` | Render external API results | TanStack Query |
-| `AddButton` | Add movie to collection, check duplicates | Mutates Zustand store |
-| `EmptyState` | Placeholder for empty collection, no results, no filters match | Props |
+| Component        | Responsibility                                                 | Data Source                 |
+| ---------------- | -------------------------------------------------------------- | --------------------------- |
+| `StatsPanel`     | Show counts per category, total entries                        | Derived from store          |
+| `FilterBar`      | Category filter, genre filter, sort control                    | URL params ↔ local state   |
+| `CategoryFilter` | Select dropdown for Watched / Plan / Dropped / All             | URL param                   |
+| `GenreFilter`    | Multi-select or dropdown from available genres                 | URL param                   |
+| `MovieGrid`      | Render filtered/sorted list of MovieCards                      | Props (computed list)       |
+| `MovieCard`      | Display poster, title, year, badge, rating, actions            | Props (pure)                |
+| `EditDialog`     | Modal form for editing category, rating, notes                 | Zustand (open/close) + form |
+| `SearchInput`    | Debounced text input, syncs with URL `?q=`                     | URL param                   |
+| `SearchResults`  | Render external API results                                    | TanStack Query              |
+| `AddButton`      | Add movie to collection, check duplicates                      | Mutates Zustand store       |
+| `EmptyState`     | Placeholder for empty collection, no results, no filters match | Props                       |
+| `HeroSection`    | Interactive entry point: search bar, category chips, movie row | Dummy data (mock)           |
+| `HeroMovieCard`  | Poster card with lazy-load Image, rating badge, genre tags     | Props (DummyMovie)          |
 
 ---
 
@@ -179,12 +177,12 @@ AppProvider
 
 ### 5.1 State Categories
 
-| Category | Tool | Scope |
-|---|---|---|
-| **Component State** | `useState` | Form inputs, dropdown open, active filter tab |
-| **UI State** | Zustand | EditDialog open/close, active modal |
-| **Persistent State** | Zustand + persist middleware | Movie entries array (→ LocalStorage) |
-| **URL State** | `useSearchParams` | `?category=`, `?genre=`, `?sort=`, `?q=` |
+| Category             | Tool                         | Scope                                         |
+| -------------------- | ---------------------------- | --------------------------------------------- |
+| **Component State**  | `useState`                   | Form inputs, dropdown open, active filter tab |
+| **UI State**         | Zustand                      | EditDialog open/close, active modal           |
+| **Persistent State** | Zustand + persist middleware | Movie entries array (→ LocalStorage)          |
+| **URL State**        | `useSearchParams`            | `?category=`, `?genre=`, `?sort=`, `?q=`      |
 
 ### 5.2 Zustand Store Design
 
@@ -210,32 +208,68 @@ interface MovieStore {
 ### 6.1 First-time User
 
 ```
-Open app → See Home page with welcome + "Get Started"
-→ Click CTA → See empty collection with "Search movies to add"
-→ Click "Search" → Enter movie title → Browse results
-→ Click "Add" → Choose category → Saved!
-→ Redirected to /movies → See new entry in collection
+Open app
+→ See Home (Search + Trending)
+→ Type movie in search bar
+→ See search results (inline or redirect to /search)
+→ Click "Add"
+→ Choose category
+→ Saved!
+→ See confirmation (toast / UI update)
+→ Movie muncul di "Recently Added"
 ```
 
 ### 6.2 Returning User
 
 ```
-Open app → /movies (default) → See existing collection
-→ Filter by "Watched" → See only watched entries
-→ Sort by rating → See highest rated first
-→ Click a card → EditDialog opens → Change rating → Save
-→ Delete another card → Confirm → Entry removed
+Open app
+→ See Home (Stats + Recently Added + Plan to Watch)
+→ Scroll / lihat collection snapshot
+→ Click "View All" → /movies
+→ Filter / sort
+→ Edit / delete entry
+```
+
+### 6.3 Quick Add Flow
+
+```
+Open app
+→ Focus ke search bar (auto focus)
+→ Type → Enter
+→ Add movie
+→ Repeat
+```
+
+### 6.4 Discover Flow (New Behavior)
+
+```
+Open app
+→ Lihat "Trending Now"
+→ Scroll film
+→ Klik film
+→ Add to collection
+```
+
+### 6.5 Collection Exploration Flow
+
+```
+Open app
+→ Lihat "Recently Added"
+→ Klik movie card
+→ EditDialog terbuka
+→ Update rating / notes
+→ Save
 ```
 
 ### 6.3 Edge Cases
 
-| Scenario | Behavior |
-|---|---|
-| **Empty collection** | Show CTA: "Your collection is empty. Search movies to add." |
-| **Filter yields nothing** | Show: "No movies match this filter. Try a different category or genre." |
-| **Search in collection is empty** | Show: "No movies matching 'query' in your collection." |
-| **Duplicate add attempt** | Show inline badge "Already in collection" on search result card |
-| **Corrupt LocalStorage** | Show error state: "Something went wrong. Clear data and start fresh?" with a reset button |
+| Scenario                          | Behavior                                                                                  |
+| --------------------------------- | ----------------------------------------------------------------------------------------- |
+| **Empty collection**              | Show CTA: "Your collection is empty. Search movies to add."                               |
+| **Filter yields nothing**         | Show: "No movies match this filter. Try a different category or genre."                   |
+| **Search in collection is empty** | Show: "No movies matching 'query' in your collection."                                    |
+| **Duplicate add attempt**         | Show inline badge "Already in collection" on search result card                           |
+| **Corrupt LocalStorage**          | Show error state: "Something went wrong. Clear data and start fresh?" with a reset button |
 
 ---
 
@@ -266,10 +300,10 @@ src/features/movies/
 
 ## 8. Future Considerations
 
-| Area | Approach |
-|---|---|
+| Area                     | Approach                                             |
+| ------------------------ | ---------------------------------------------------- |
 | **Search in collection** | Add client-side filter by `?q=` against entry titles |
-| **Custom tags** | Add `tags: string[]` to `MovieEntry` |
-| **Pagination** | Slice `MovieGrid` into pages if entries > 50 |
-| **Export/Import** | JSON download of store, file upload to restore |
-| **Service Worker** | Cache TMDB images, serve offline fallback |
+| **Custom tags**          | Add `tags: string[]` to `MovieEntry`                 |
+| **Pagination**           | Slice `MovieGrid` into pages if entries > 50         |
+| **Export/Import**        | JSON download of store, file upload to restore       |
+| **Service Worker**       | Cache TMDB images, serve offline fallback            |

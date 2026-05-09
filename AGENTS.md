@@ -8,6 +8,7 @@ Built on the **Bulletproof React** architecture — a scalable Next.js applicati
 
 ### Application Domain
 
+- Users discover movies via interactive search on the home page
 - Users search for movies via the TMDB API
 - Users add movies to a personal tracker
 - Movies can be categorized (Watched / Plan to Watch / Dropped)
@@ -42,23 +43,46 @@ npm run build
 ```
 src/
 ├── app/              # Application layer (pages, layouts, providers)
-│   ├── layout.tsx    # Root layout
+│   ├── layout.tsx    # Root layout (metadata, viewport from config)
 │   ├── page.tsx      # Home/landing page
 │   ├── not-found.tsx # 404 page
 │   └── provider.tsx  # Global providers (QueryClient, ErrorBoundary)
 ├── components/       # Shared UI components
 │   ├── errors/       # Error boundary fallbacks
-│   ├── layouts/      # Shared layout components
-│   └── ui/           # Design system components
+│   ├── layouts/      # Shared layout components (header, footer, app-layout)
+│   └── ui/           # Design system components (barrel export via index.ts)
 │       ├── button/   # Button component (variants: default, outline, destructive, etc.)
-│       └── form/     # Form components (Form, Input, Textarea, Select, Switch, Label, FieldWrapper, Error)
-├── config/           # Global configs and env variables
+│       ├── form/     # Form components (Form, Input, Textarea, Select, Switch, Label, FieldWrapper, Error)
+│       ├── index.ts  # Barrel exports — single entry point
+├── config/           # Global configs, env variables, and static data
 │   ├── env.ts        # Zod-validated env vars
-│   └── paths.ts      # Route path constants
-├── features/         # Feature-based modules (add features here)
-│   └── .gitkeep      # Placeholder — create feature folders as needed
+│   ├── icons.tsx     # Central SVG icon components (Search, Bookmark, Chart, Star, etc.)
+│   ├── paths.ts      # Route path constants
+│   └── site.ts       # Central static data (site name, description, nav links, features)
+├── constants/        # Application-wide constants
+│   └── icons/        # Centralized Lucide icon mapping (barrel export via index.ts)
+│       ├── icons.tsx # ICON_MAP + getIcon() function
+│       └── index.ts  # Exports: getIcon, ICON_MAP, IconKey, IconConfig
+├── data/             # Data layer — dummy data & domain models (barrel export via index.ts)
+│   ├── categories.ts # Category constants (Category type, categories array)
+│   ├── movies.ts     # Movie model + data + utility functions
+│   └── index.ts      # Exports: Movie, categories, movies, getMoviesByCategory, searchMovies
+├── features/         # Feature-based modules
+│   └── landing/      # Landing page feature
+│       └── components/
+│           ├── feature-cards.tsx   # Bento grid feature cards
+│           ├── hero-section.tsx    # Hero section
+│           ├── hero-search/        # Command palette search component
+│           │   ├── components/     # UI sub-components (SearchInput, TagFilter, MovieItem, etc.)
+│           │   ├── hooks/          # Custom hooks (useHeroSearch)
+│           │   ├── types.ts        # Feature-specific types & constants
+│           │   ├── index.ts        # Barrel exports
+│           └── __tests__/
+│               └── home-page.test.tsx
 ├── hooks/            # Shared React hooks
-│   └── use-disclosure.ts  # Open/close toggle hook
+│   ├── use-disclosure.ts  # Open/close toggle hook
+│   ├── use-keyboard-shortcut.ts  # Keyboard shortcut listener
+│   └── use-scroll.ts      # Scroll position hook
 ├── lib/              # Preconfigured libraries
 │   ├── api-client.ts # Fetch-based API client with cookie forwarding
 │   └── react-query.ts # TanStack Query config defaults
@@ -126,19 +150,20 @@ src/features/movies/
 
 ### Available UI Components
 
-#### Button (`@/components/ui/button`)
+#### From barrel (RECOMMENDED)
 ```tsx
-import { Button } from '@/components/ui/button';
+import { Button, Typography, Kbd, Form, Input } from '@/components/ui';
+```
 
+#### Button
+```tsx
 <Button variant="default|outline|destructive|secondary|ghost|link" size="default|sm|lg|icon" icon={<LucideIcon />}>
   Click me
 </Button>
 ```
 
-#### Form (`@/components/ui/form`)
+#### Form
 ```tsx
-import { Form, Input, Textarea, Select, Switch, Label, FieldWrapper, Error } from '@/components/ui/form';
-
 <Form submitHandler={handleSubmit} schema={validationSchema}>
   <Input label="Title" name="title" placeholder="Movie title" />
   <Select label="Category" name="category" options={[...]} />
@@ -146,6 +171,64 @@ import { Form, Input, Textarea, Select, Switch, Label, FieldWrapper, Error } fro
   <Switch label="Watched" name="watched" />
 </Form>
 ```
+
+### Central Config (`@/config/`)
+
+#### site.ts — Static Data Hub
+All static data lives in `src/config/site.ts`:
+- `siteConfig` — name, description, tagline, URL, author
+- `navLinks` — navigation link definitions
+- `features` — feature card data for landing page
+
+Import anywhere without duplication:
+```tsx
+import { siteConfig, navLinks, features } from '@/config/site';
+```
+
+#### icons.tsx — Central SVG Icon Components
+Custom SVG icons as named React components with a dynamic `Icon` wrapper:
+```tsx
+import { Icon, SearchIcon, iconMap } from '@/config/icons';
+
+// Direct component usage
+<SearchIcon className="size-6" strokeWidth={1} />
+
+// Dynamic usage by name
+<Icon name="search" className="size-6" />
+```
+
+### Centralized Icon System (`@/constants/icons/`)
+All Lucide React icons are mapped centrally — never import from `lucide-react` directly in components.
+
+```tsx
+import { getIcon } from '@/constants';
+
+// Usage
+{getIcon('search', 'size-4 text-muted-foreground')}
+{getIcon('star', 'size-3 text-yellow-500')}
+```
+
+Icon map definition (`src/constants/icons/icons.tsx`):
+```tsx
+export const ICON_MAP: Record<IconKey, IconConfig> = {
+  search: { icon: Search, label: 'Search' },
+  star: { icon: Star, label: 'Rating' },
+  all: { icon: Clapperboard, label: 'Semua' },
+  // ... more icons
+};
+```
+
+### Centralized Data Layer (`@/data/`)
+All dummy data and domain models are centralized and exported via barrel file:
+
+```tsx
+import { Movie, movies, categories, getMoviesByCategory, searchMovies } from '@/data';
+```
+
+Structure:
+- `categories.ts` — Category constants and type
+- `movies.ts` — Movie model, data array, and utility functions (getMoviesByCategory, searchMovies)
+- `index.ts` — Barrel exports
 
 ## State Management Strategy
 
@@ -287,13 +370,15 @@ it('renders the form and submits', async () => {
 ### UI & Styling
 - **Tailwind CSS** — utility-first styling
 - **Radix UI** — `@radix-ui/react-label`, `@radix-ui/react-slot`, `@radix-ui/react-switch`
-- **Lucide React** — icons
+- **Lucide React** — icons (consumed via centralized `@/constants/icons/`)
 - **class-variance-authority** + **tailwind-merge** + **clsx** — component variants and class merging
+- **motion/react** — animations for command palette and UI transitions
 
 ### Data & State
 - **TanStack Query** — server state (TMDB API)
 - **Zustand** — client state (filters, UI state)
 - **React Hook Form + Zod** — forms
+- **usehooks-ts** — shared React hooks (`useDebounceValue`, `useOnClickOutside`, etc.)
 - **dayjs** — date formatting
 
 ### Testing

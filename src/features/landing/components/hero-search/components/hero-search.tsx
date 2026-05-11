@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from 'motion/react';
 
-import { getIcon } from '@/constants';
 import { cn } from '@/utils/cn';
 
 import { EmptyState, MovieItem, PanelFooter, SearchInput, TagFilter } from '.';
@@ -83,7 +82,7 @@ export function HeroSearch() {
             className={cn(
               'absolute left-0 right-0 top-full z-50 mt-2',
               'overflow-hidden rounded-2xl border border-border',
-              'bg-popup/95 backdrop-blur-md',
+              'bg-background/60 backdrop-blur-md',
               'shadow-xl ring-1 ring-black/5 dark:ring-white/10',
             )}
           >

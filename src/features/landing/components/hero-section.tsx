@@ -1,25 +1,29 @@
 'use client';
 
-import { Typography } from '@/components/ui/typography';
+import { useTranslations } from 'next-intl';
+
+import { Typography } from '@/components/ui';
 
 import { HeroSearch } from './hero-search';
 
 export function HeroSection() {
+  const t = useTranslations('hero');
+
   return (
-    <section className="relative flex min-h-[70vh] flex-col items-center px-4 pt-20 sm:pt-28">
-      <div className="mx-auto flex w-full max-w-2xl flex-col items-center text-center">
+    <section className="relative flex min-h-[50vh] flex-col items-center px-4 pt-20 sm:pt-28">
+      <div className="mx-auto flex w-full max-w-xl flex-col items-center text-center">
         <Typography.Title
-          variant="1/extrabold"
-          className="mb-2 tracking-tight font-mono"
+          variant="1/bold"
+          className="mb-2 tracking-tight"
         >
-          Cari & Simpan Film Favoritmu
+          {t('title')}
         </Typography.Title>
 
         <Typography.Text
           variant="sm/normal"
           className="mb-8 block text-muted-foreground"
         >
-          Temukan ribuan film, simpan ke koleksi pribadi, dan lacak tontonanmu.
+          {t('subtitle')}
         </Typography.Text>
 
         <HeroSearch />

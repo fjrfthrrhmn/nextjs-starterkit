@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { Kbd, Typography } from '@/components/ui';
 import { cn } from '@/utils/cn';
 
@@ -11,6 +13,8 @@ type PanelFooterProps = {
 };
 
 export function PanelFooter({ panelState, movieCount }: PanelFooterProps) {
+  const t = useTranslations('search');
+
   return (
     <div className="flex items-center justify-between border-t border-border/40 px-3 py-2">
       <div className="flex items-center gap-2.5">

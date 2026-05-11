@@ -12,10 +12,13 @@ import {
   Sun,
   Languages,
   Contrast,
+  Github,
+  Twitter,
+  Coffee,
   type LucideIcon,
 } from 'lucide-react';
 
-export type Action2IconKey = 'copy' | 'trash' | 'edit' | 'share' | 'download' | 'upload' | 'external-link' | 'link' | 'select' | 'navigate' | 'globe' | 'moon' | 'sun' | 'languages' | 'contrast';
+export type Action2IconKey = 'copy' | 'trash' | 'edit' | 'share' | 'download' | 'upload' | 'external-link' | 'link' | 'select' | 'navigate' | 'globe' | 'moon' | 'sun' | 'languages' | 'contrast' | 'github' | 'twitter' | 'coffee';
 
 export const ACTION_2_ICONS: Record<Action2IconKey, LucideIcon> = {
   copy: Copy,
@@ -33,6 +36,9 @@ export const ACTION_2_ICONS: Record<Action2IconKey, LucideIcon> = {
   sun: Sun,
   languages: Languages,
   contrast: Contrast,
+  github: Github,
+  twitter: Twitter,
+  coffee: Coffee,
 } as const;
 
 export const ACTION_2_ICON_KEYS = Object.keys(ACTION_2_ICONS) as Action2IconKey[];

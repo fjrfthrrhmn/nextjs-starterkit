@@ -127,13 +127,13 @@ export default function CommandPalette() {
     (message: string, type: "success" | "error" | "info" = "info") => {
       // Create notification element
       const notification = document.createElement("div");
-      notification.className = `fixed bottom-4 right-4 z-50 rounded-lg px-4 py-3 shadow-lg transition-all duration-300 transform translate-y-0 opacity-0 ${
+      notification.className = `fixed bottom-4 right-4 z-50 rounded-md px-4 py-3 shadow-lg transition-all duration-300 transform translate-y-0 opacity-0 ${
         type === "success"
-          ? "bg-green-500"
+          ? "bg-chart-5 text-foreground"
           : type === "error"
-          ? "bg-red-500"
-          : "bg-blue-500"
-      } text-white`;
+          ? "bg-destructive text-foreground"
+          : "bg-chart-2 text-foreground"
+      }`;
       notification.textContent = message;
 
       // Add to DOM
@@ -881,7 +881,7 @@ export default function CommandPalette() {
       {!open && (
         <motion.button
           onClick={() => setOpen(true)}
-          className="fixed right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#181818]/80 text-white shadow-lg backdrop-blur-md hover:bg-[#181818]/90 dark:bg-white/20 dark:hover:bg-white/30"
+          className="fixed right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-foreground shadow-lg backdrop-blur-md hover:bg-muted transition-colors"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           initial={{ opacity: 0, y: -10 }}
@@ -906,7 +906,7 @@ export default function CommandPalette() {
           >
             <motion.div
               ref={ref}
-              className="relative w-full max-w-2xl overflow-hidden rounded-xl bg-white/90 text-[#181818] shadow-2xl backdrop-blur-md dark:bg-[#181818]/50 dark:text-[#f2f2f2]"
+              className="relative w-full max-w-2xl overflow-hidden rounded-xl bg-card text-card-foreground shadow-xl backdrop-blur-md border border-border"
               initial={{ opacity: 0, scale: 0.9, y: -20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -20 }}
@@ -918,13 +918,13 @@ export default function CommandPalette() {
               }}
             >
               {/* Search Input or AI Prompt Input */}
-              <div className="flex items-center border-b border-[#ffffff]/10 px-4">
+              <div className="flex items-center border-b border-border px-4">
                 <div className="flex w-full items-center">
                   {showAIPrompt ? (
                     <>
-                      {createIcon("zap", "mr-2 h-4 w-4 shrink-0 text-blue-400")}
+                      {createIcon("zap", "mr-2 h-4 w-4 shrink-0 text-primary")}
                       <input
-                        className="h-12 w-full border-0 bg-transparent text-[#181818] placeholder:text-[#181818]/50 focus:outline-none focus:ring-0 dark:text-[#f2f2f2] dark:placeholder:text-[#f2f2f2]/50"
+                        className="h-12 w-full border-0 bg-transparent text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-0"
                         value={aiPrompt}
                         onChange={(e) => setAiPrompt(e.target.value)}
                         placeholder="Ask AI anything..."
@@ -941,7 +941,7 @@ export default function CommandPalette() {
                     <>
                       {createIcon("search", "mr-2 h-4 w-4 shrink-0 opacity-50")}
                       <input
-                        className="h-12 w-full border-0 bg-transparent text-[#181818] placeholder:text-[#181818]/50 focus:outline-none focus:ring-0 dark:text-[#f2f2f2] dark:placeholder:text-[#f2f2f2]/50"
+                        className="h-12 w-full border-0 bg-transparent text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-0"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         placeholder="Search commands or type / to filter..."
@@ -953,19 +953,19 @@ export default function CommandPalette() {
                 <div className="flex items-center gap-2">
                   {showAIPrompt ? (
                     <>
-                      <span className="text-xs text-[#181818]/70 dark:text-[#f2f2f2]/70">
+                      <span className="text-xs text-muted-foreground">
                         Back to commands
                       </span>
-                      <kbd className="rounded-md border border-[#181818]/20 bg-[#181818]/10 px-1.5 py-0.5 text-xs text-[#181818]/70 dark:border-[#ffffff]/20 dark:bg-[#ffffff]/10 dark:text-[#f2f2f2]/70">
+                      <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
                         Esc
                       </kbd>
                     </>
                   ) : (
                     <>
-                      <span className="text-xs text-[#181818]/70 dark:text-[#f2f2f2]/70">
+                      <span className="text-xs text-muted-foreground">
                         Ask AI
                       </span>
-                      <kbd className="rounded-md border border-[#181818]/20 bg-[#181818]/10 px-1.5 py-0.5 text-xs text-[#181818]/70 dark:border-[#ffffff]/20 dark:bg-[#ffffff]/10 dark:text-[#f2f2f2]/70">
+                      <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
                         Tab
                       </kbd>
                     </>
@@ -976,7 +976,7 @@ export default function CommandPalette() {
               {/* Category Filter (only shown when not in AI mode) */}
               {!showAIPrompt && (
                 <div
-                  className="flex items-center gap-2 px-4 py-2 border-b border-[#ffffff]/10 overflow-x-auto scrollbar-hide"
+                  className="flex items-center gap-2 px-4 py-2 border-b border-border overflow-x-auto scrollbar-hide"
                   style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
                   {/* Hide scrollbar for Webkit browsers */}
@@ -987,8 +987,8 @@ export default function CommandPalette() {
                     onClick={() => setActiveCategory("All")}
                     className={`flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                       activeCategory === "All"
-                        ? "bg-blue-500/90 text-white shadow-sm"
-                        : "bg-[#181818]/10 text-[#181818]/50 hover:bg-[#181818]/20 dark:bg-[#ffffff]/10 dark:text-[#f2f2f2]/50 dark:hover:bg-[#ffffff]/20 opacity-60"
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground opacity-60"
                     }`}
                   >
                     All
@@ -999,8 +999,8 @@ export default function CommandPalette() {
                       onClick={() => setActiveCategory(category)}
                       className={`flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                         activeCategory === category
-                          ? "bg-blue-500/90 text-white shadow-sm"
-                          : "bg-[#181818]/10 text-[#181818]/50 hover:bg-[#181818]/20 dark:bg-[#ffffff]/10 dark:text-[#f2f2f2]/50 dark:hover:bg-[#ffffff]/20 opacity-60"
+                          ? "bg-primary text-primary-foreground shadow-sm"
+                          : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground opacity-60"
                       }`}
                     >
                       {category}
@@ -1012,20 +1012,20 @@ export default function CommandPalette() {
               {/* AI Prompt Mode */}
               {showAIPrompt ? (
                 <div className="p-4 max-h-[60vh]">
-                  <div className="rounded-lg bg-[#181818]/5 p-4 dark:bg-[#ffffff]/5">
-                    <h3 className="mb-2 text-sm font-medium">AI Assistant</h3>
-                    <p className="text-xs text-[#181818]/70 dark:text-[#f2f2f2]/70 mb-4">
+                  <div className="rounded-lg border border-border bg-card p-4">
+                    <h3 className="mb-2 text-sm font-medium text-foreground">AI Assistant</h3>
+                    <p className="text-xs text-muted-foreground mb-4">
                       Ask anything and get AI-powered assistance. Type your
                       question above and press Enter to submit.
                     </p>
                     <div className="flex flex-col gap-2">
                       <div className="flex items-start gap-2">
-                        <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-500/20 text-blue-500">
+                        <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary">
                           {createIcon("zap", "h-3 w-3")}
                         </div>
                         <div className="text-xs">
-                          <p className="font-medium">Example questions:</p>
-                          <ul className="mt-1 space-y-1 text-[#181818]/70 dark:text-[#f2f2f2]/70">
+                          <p className="font-medium text-foreground">Example questions:</p>
+                          <ul className="mt-1 space-y-1 text-muted-foreground">
                             <li>• How do I create a new project?</li>
                             <li>
                               • What's the best way to optimize performance?
@@ -1041,7 +1041,7 @@ export default function CommandPalette() {
                     <div className="mt-4 flex justify-between">
                       <button
                         onClick={() => setShowAIPrompt(false)}
-                        className="rounded bg-[#181818]/10 px-3 py-1 text-xs font-medium hover:bg-[#181818]/20 dark:bg-[#ffffff]/10 dark:hover:bg-[#ffffff]/20"
+                        className="rounded border border-border bg-muted px-3 py-1 text-xs font-medium hover:bg-accent transition-colors"
                       >
                         Cancel
                       </button>
@@ -1050,8 +1050,8 @@ export default function CommandPalette() {
                         disabled={!aiPrompt.trim()}
                         className={`rounded px-3 py-1 text-xs font-medium ${
                           aiPrompt.trim()
-                            ? "bg-blue-500 text-white hover:bg-blue-600"
-                            : "bg-blue-500/50 text-white/70 cursor-not-allowed"
+                            ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                            : "bg-muted text-muted-foreground cursor-not-allowed opacity-50"
                         }`}
                       >
                         Submit
@@ -1065,8 +1065,8 @@ export default function CommandPalette() {
                   {getRecentCommands().length > 0 && !searchTerm && (
                     <div className="px-2 py-1">
                       <div className="flex items-center gap-2 px-2 text-xs">
-                        <span className="font-medium">Recent</span>
-                        <span className="text-xs text-[#181818]/50 dark:text-[#f2f2f2]/50">
+                        <span className="font-medium text-foreground">Recent</span>
+                        <span className="text-xs text-muted-foreground">
                           {getRecentCommands().length} items
                         </span>
                       </div>
@@ -1082,8 +1082,8 @@ export default function CommandPalette() {
                             ref={(el) => setItemRef(el, globalIdx)}
                             className={`mx-2 flex cursor-pointer items-center justify-between rounded-md px-2 py-2 transition-colors ${
                               isSelected
-                                ? "bg-[#181818]/20 text-[#181818] dark:bg-white/20 dark:text-white"
-                                : "hover:bg-[#181818]/10 dark:hover:bg-[#ffffff]/10"
+                                ? "bg-muted text-foreground"
+                                : "hover:bg-muted/50 text-foreground"
                             }`}
                             onClick={() => {
                               setSelectedIndex(globalIdx);
@@ -1096,8 +1096,8 @@ export default function CommandPalette() {
                               <div
                                 className={`flex h-5 w-5 items-center justify-center rounded border ${
                                   isSelected
-                                    ? "border-[#181818]/40 bg-[#181818]/20 dark:border-white/40 dark:bg-white/20"
-                                    : "border-[#181818]/20 bg-[#181818]/10 dark:border-[#ffffff]/20 dark:bg-[#ffffff]/10"
+                                    ? "border-border bg-muted"
+                                    : "border-border bg-muted/50"
                                 }`}
                               >
                                 {item.icon}
@@ -1105,12 +1105,12 @@ export default function CommandPalette() {
                               <span className="text-xs font-medium">
                                 {item.title}
                               </span>
-                              <span className="text-xs text-[#181818]/50 dark:text-[#f2f2f2]/50">
+                              <span className="text-xs text-muted-foreground">
                                 {item.category}
                               </span>
                             </div>
                             {item.shortcut && (
-                              <kbd className="rounded border border-[#181818]/20 bg-[#181818]/5 px-1.5 py-0.5 text-xs text-[#181818]/70 dark:border-[#ffffff]/20 dark:bg-[#ffffff]/5 dark:text-[#f2f2f2]/70">
+                              <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
                                 {item.shortcut}
                               </kbd>
                             )}
@@ -1124,8 +1124,8 @@ export default function CommandPalette() {
                   {getFavoriteCommands().length > 0 && !searchTerm && (
                     <div className="px-2 py-1">
                       <div className="flex items-center gap-2 px-2 text-xs">
-                        <span className="font-medium">Favorites</span>
-                        <span className="text-xs text-[#181818]/50 dark:text-[#f2f2f2]/50">
+                        <span className="font-medium text-foreground">Favorites</span>
+                        <span className="text-xs text-muted-foreground">
                           {getFavoriteCommands().length} items
                         </span>
                       </div>
@@ -1149,8 +1149,8 @@ export default function CommandPalette() {
                               ref={(el) => setItemRef(el, globalIdx)}
                               className={`mx-2 flex cursor-pointer items-center justify-between rounded-md px-2 py-2 transition-colors ${
                                 isSelected
-                                  ? "bg-[#181818]/20 text-[#181818] dark:bg-white/20 dark:text-white"
-                                  : "hover:bg-[#181818]/10 dark:hover:bg-[#ffffff]/10"
+                                  ? "bg-muted text-foreground"
+                                  : "hover:bg-muted/50 text-foreground"
                               }`}
                               onClick={() => {
                                 setSelectedIndex(globalIdx);
@@ -1163,8 +1163,8 @@ export default function CommandPalette() {
                                 <div
                                   className={`flex h-5 w-5 items-center justify-center rounded border ${
                                     isSelected
-                                      ? "border-[#181818]/40 bg-[#181818]/20 dark:border-white/40 dark:bg-white/20"
-                                      : "border-[#181818]/20 bg-[#181818]/10 dark:border-[#ffffff]/20 dark:bg-[#ffffff]/10"
+                                      ? "border-border bg-muted"
+                                      : "border-border bg-muted/50"
                                   }`}
                                 >
                                   {item.icon}
@@ -1174,12 +1174,12 @@ export default function CommandPalette() {
                                     ? `${item.title}: ${getThemeText()}`
                                     : item.title}
                                 </span>
-                                <span className="text-xs text-[#181818]/50 dark:text-[#f2f2f2]/50">
+                                <span className="text-xs text-muted-foreground">
                                   {item.category}
                                 </span>
                               </div>
                               {item.shortcut && (
-                                <kbd className="rounded border border-[#181818]/20 bg-[#181818]/5 px-1.5 py-0.5 text-xs text-[#181818]/70 dark:border-[#ffffff]/20 dark:bg-[#ffffff]/5 dark:text-[#f2f2f2]/70">
+                                <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
                                   {item.shortcut}
                                 </kbd>
                               )}
@@ -1192,10 +1192,10 @@ export default function CommandPalette() {
                   {/* All Commands or Search Results */}
                   <div className="px-2 py-1">
                     <div className="flex items-center gap-2 px-2 pt-1 text-xs">
-                      <span className="font-medium">
+                      <span className="font-medium text-foreground">
                         {searchTerm ? "Search Results" : "All Commands"}
                       </span>
-                      <span className="text-xs text-[#181818]/50 dark:text-[#f2f2f2]/50">
+                      <span className="text-xs text-muted-foreground">
                         {getFilteredCommands().length} items
                       </span>
                     </div>
@@ -1203,13 +1203,13 @@ export default function CommandPalette() {
                     {/* No results message */}
                     {getFilteredCommands().length === 0 && (
                       <div className="mx-2 my-8 flex flex-col items-center justify-center text-center">
-                        {createIcon("search", "mb-2 h-5 w-5 text-[#181818]/30 dark:text-[#f2f2f2]/30")}
-                        <p className="text-sm text-[#181818]/50 dark:text-[#f2f2f2]/50">
+                        {createIcon("search", "mb-2 h-5 w-5 text-muted-foreground/30")}
+                        <p className="text-sm text-muted-foreground">
                           No commands found for "{searchTerm}"
                         </p>
                         <button
                           onClick={() => setSearchTerm("")}
-                          className="mt-2 rounded-md bg-[#181818]/10 px-3 py-1 text-xs font-medium hover:bg-[#181818]/20 dark:bg-[#ffffff]/10 dark:hover:bg-[#ffffff]/20"
+                          className="mt-2 rounded-md border border-border bg-muted px-3 py-1 text-xs font-medium hover:bg-accent transition-colors"
                         >
                           Clear search
                         </button>
@@ -1239,8 +1239,8 @@ export default function CommandPalette() {
                             ref={(el) => setItemRef(el, globalIdx)}
                             className={`mx-2 flex cursor-pointer items-center justify-between rounded-md px-2 py-2 transition-colors ${
                               isSelected
-                                ? "bg-[#181818]/20 text-[#181818] dark:bg-white/20 dark:text-white"
-                                : "hover:bg-[#181818]/10 dark:hover:bg-[#ffffff]/10"
+                                ? "bg-muted text-foreground"
+                                : "hover:bg-muted/50 text-foreground"
                             }`}
                             onClick={() => {
                               setSelectedIndex(globalIdx);
@@ -1253,8 +1253,8 @@ export default function CommandPalette() {
                               <div
                                 className={`flex h-5 w-5 items-center justify-center rounded border ${
                                   isSelected
-                                    ? "border-[#181818]/40 bg-[#181818]/20 dark:border-white/40 dark:bg-white/20"
-                                    : "border-[#181818]/20 bg-[#181818]/10 dark:border-[#ffffff]/20 dark:bg-[#ffffff]/10"
+                                    ? "border-border bg-muted"
+                                    : "border-border bg-muted/50"
                                 }`}
                               >
                                 {item.icon}
@@ -1263,17 +1263,17 @@ export default function CommandPalette() {
                                 <span className="text-xs font-medium">
                                   {item.title}
                                 </span>
-                                <span className="text-xs text-[#181818]/50 dark:text-[#f2f2f2]/50">
+                                <span className="text-xs text-muted-foreground">
                                   {item.description}
                                 </span>
                               </div>
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className="text-xs text-[#181818]/50 dark:text-[#f2f2f2]/50">
+                              <span className="text-xs text-muted-foreground">
                                 {item.category}
                               </span>
                               {item.shortcut && (
-                                <kbd className="rounded border border-[#181818]/20 bg-[#181818]/5 px-1.5 py-0.5 text-xs text-[#181818]/70 dark:border-[#ffffff]/20 dark:bg-[#ffffff]/5 dark:text-[#f2f2f2]/70">
+                                <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
                                   {item.shortcut}
                                 </kbd>
                               )}
@@ -1286,40 +1286,40 @@ export default function CommandPalette() {
               )}
 
               {/* Footer with keyboard navigation hint */}
-              <div className="flex items-center justify-between border-t border-[#ffffff]/10 p-2">
+              <div className="flex items-center justify-between border-t border-border p-2">
                 <div className="flex items-center gap-2">
-<div className="flex h-7 w-7 items-center justify-center rounded-md">
-                      {createIcon("command", "h-3.5 w-3.5 text-[#181818]/50 dark:text-[#f2f2f2]/50")}
+                  <div className="flex h-7 w-7 items-center justify-center rounded-md">
+                      {createIcon("command", "h-3.5 w-3.5 text-muted-foreground")}
                     </div>
-                  <span className="text-xs text-[#181818]/50 dark:text-[#f2f2f2]/50">
+                  <span className="text-xs text-muted-foreground">
                     +
                   </span>
-                  <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#181818]/10 dark:bg-[#ffffff]/10">
+                  <div className="flex h-5 w-5 items-center justify-center rounded-md bg-muted">
                     <span className="text-xs font-medium">K</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   {showAIPrompt ? (
                     <>
-                      <span className="text-xs font-medium">Submit</span>
-                      <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#181818]/10 dark:bg-[#ffffff]/10">
+                      <span className="text-xs font-medium text-foreground">Submit</span>
+                      <div className="flex h-5 w-5 items-center justify-center rounded-md bg-muted">
                         <span className="text-xs font-medium">↵</span>
                       </div>
                     </>
                   ) : (
                     <>
-                      <span className="text-xs font-medium">Navigate</span>
-                      <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#181818]/10 dark:bg-[#ffffff]/10">
+                      <span className="text-xs font-medium text-foreground">Navigate</span>
+                      <div className="flex h-5 w-5 items-center justify-center rounded-md bg-muted">
                         <span className="text-xs font-medium">↑</span>
                       </div>
-                      <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#181818]/10 dark:bg-[#ffffff]/10">
+                      <div className="flex h-5 w-5 items-center justify-center rounded-md bg-muted">
                         <span className="text-xs font-medium">↓</span>
                       </div>
-                      <span className="mx-2 text-[#181818]/30 dark:text-[#f2f2f2]/30">
+                      <span className="mx-2 text-muted-foreground/30">
                         |
                       </span>
-                      <span className="text-xs font-medium">Execute</span>
-                      <div className="flex h-5 w-5 items-center justify-center rounded-md bg-[#181818]/10 dark:bg-[#ffffff]/10">
+                      <span className="text-xs font-medium text-foreground">Execute</span>
+                      <div className="flex h-5 w-5 items-center justify-center rounded-md bg-muted">
                         <span className="text-xs font-medium">↵</span>
                       </div>
                     </>

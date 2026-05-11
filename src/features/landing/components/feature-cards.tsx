@@ -1,12 +1,16 @@
 import React from 'react';
+import { useTranslations } from 'next-intl';
 
-import { Typography } from '@/components/ui/typography';
-import { iconMap } from '@/config/icons';
-import { features } from '@/config/site';
+import { Typography } from '@/components/ui';
+import { getIcon, type IconKey } from '@/constants/icons';
 import { cn } from '@/utils/cn';
 
+type FeatureKey = 'database' | 'collection' | 'stats' | 'more';
+
+const FEATURE_KEYS: FeatureKey[] = ['database', 'collection', 'stats', 'more'];
+
 type FeatureCardProps = React.ComponentProps<'div'> & {
-  feature: (typeof features)[number];
+  featureKey: FeatureKey;
 };
 
 function GridPattern({
@@ -71,9 +75,17 @@ function genRandomPattern(length?: number): number[][] {
   ]);
 }
 
-function FeatureCard({ feature, className, ...props }: FeatureCardProps) {
+const FEATURE_ICONS: Record<FeatureKey, IconKey> = {
+  database: 'search',
+  collection: 'bookmark',
+  stats: 'chart',
+  more: 'star',
+};
+
+function FeatureCard({ featureKey, className, ...props }: FeatureCardProps) {
+  const t = useTranslations('features');
   const p = genRandomPattern();
-  const IconComponent = iconMap[feature.icon as keyof typeof iconMap];
+  const iconKey = FEATURE_ICONS[featureKey];
 
   return (
     <div
@@ -95,21 +107,15 @@ function FeatureCard({ feature, className, ...props }: FeatureCardProps) {
           />
         </div>
       </div>
-      {IconComponent && (
-        <IconComponent
-          className="text-primary/75 size-6"
-          strokeWidth={1.5}
-          aria-hidden
-        />
-      )}
+      {getIcon(iconKey, 'text-primary/75 size-6', 1.5)}
       <Typography.Title variant="5/semibold" className="mt-10">
-        {feature.title}
+        {t(`${featureKey}.title`)}
       </Typography.Title>
       <Typography.Text
         variant="xs/normal"
         className="text-muted-foreground relative z-20 mt-2"
       >
-        {feature.description}
+        {t(`${featureKey}.description`)}
       </Typography.Text>
     </div>
   );
@@ -118,8 +124,8 @@ function FeatureCard({ feature, className, ...props }: FeatureCardProps) {
 export function FeatureCards() {
   return (
     <div className="grid gap-1 sm:grid-cols-2 [&>div]:border [&>div]:border-border">
-      {features.map((feature) => (
-        <FeatureCard key={feature.title} feature={feature} />
+      {FEATURE_KEYS.map((key) => (
+        <FeatureCard key={key} featureKey={key} />
       ))}
     </div>
   );

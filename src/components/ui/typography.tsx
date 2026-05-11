@@ -117,4 +117,7 @@ const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
 );
 Text.displayName = 'Typography.Text';
 
-export const Typography = { Title, Text };
+const Heading = Title;
+Heading.displayName = 'Typography.Heading';
+
+export const Typography = { Title, Text, Heading };

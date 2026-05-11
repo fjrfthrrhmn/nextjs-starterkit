@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'motion/react';
 import React from 'react';
+import { useTranslations } from 'next-intl';
 
 import { Kbd } from '@/components/ui';
 import { cn } from '@/utils/cn';
@@ -25,6 +26,9 @@ export function SearchInput({
   onClear,
   hasValue,
 }: SearchInputProps) {
+  const tSearch = useTranslations('search');
+  const tNav = useTranslations('nav');
+
   return (
     <div className="relative flex items-center gap-2 px-3 py-2.5">
       {getIcon('search', 'size-4 shrink-0 text-muted-foreground')}
@@ -35,13 +39,13 @@ export function SearchInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onFocus={onFocus}
-        placeholder="Cari film, genre, atau aktor..."
+        placeholder={tSearch('initial').split('.')[0] + '.'}
         className={cn(
           'flex-1 bg-transparent text-sm text-foreground outline-none',
           'placeholder:text-muted-foreground/60',
           'caret-primary',
         )}
-        aria-label="Cari film"
+        aria-label={tNav('search')}
         role="combobox"
         aria-autocomplete="list"
       />

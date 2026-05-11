@@ -1,209 +1,240 @@
-# Acctual — Style Reference
+# Linear — Style Reference
+> Midnight Command Center: A dark, layered interface lit by precise accents, like a high-tech control panel.
 
-> Architectural blueprint on white marble. Precision, clarity, and transparent flow of information.
+**Theme:** dark
 
-**Theme:** light
-
-Acctual is a clean, sharp accounting software interface, defined by abundant whitespace, crisp typography, and an almost entirely achromatic palette punctuated by a single vibrant teal accent. It feels like an impeccably organized digital ledger, where the strict logical layout and high contrast ensure every piece of financial data is immediately comprehensible. The signature element is the interplay of system sans-serif for secondary text with the bespoke Open Runde, creating a dual texture of approachability and structured precision.
+Linear presents a sophisticated and focused dark-mode experience, reminiscent of a command center dashboard. A deep charcoal base creates a serious, immersive canvas, while subtle gradients and layered surfaces build depth without harsh contrasts. Distinctive muted text colors (#8a8f98 for secondary, #62666d for tertiary) maintain readability against the dark backdrop. Critically, interaction is marked by a single vivid lime green (#e4f222), applied selectively to primary calls to action, preventing visual clutter and guiding the user's eye with precision.
 
 ## Tokens — Colors
 
-| Name         | Value     | Token                  | Role                                                                                                                             |
-| ------------ | --------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Canvas White | `#ffffff` | `--color-canvas-white` | Page backgrounds, card surfaces, primary text contrast.                                                                          |
-| Ink Black    | `#000000` | `--color-ink-black`    | Primary text, critical headings, strong brand emphasis. Its absolute blackness provides uncompromising legibility against white. |
-| Graphite     | `#0f0f0f` | `--color-graphite`     | Prominent headings and body text, a slightly softer variant of Ink Black.                                                        |
-| Deep Slate   | `#1e1e1`  | `--color-deep-slate`   | Secondary body text and descriptions, offering a subtle visual break from pure black without sacrificing contrast.               |
-| Ash Gray     | `#8d8d8d` | `--color-ash-gray`     | Subtle text, metadata, disabled states. Provides gentle visual hierarchy.                                                        |
-| Button Black | `#0d111b` | `--color-button-black` | Primary action buttons, providing a solid, grounded feel against the white background.                                           |
-| Sky Teal     | `#0098f2` | `--color-sky-teal`     | Interactive elements, links, checkmarks, highlights — the sole vibrant accent for key user actions and positive indications.     |
-| Hot Pink     | `#f200ca` | `--color-hot-pink`     | Decorative elements or specific brand highlights within icons, a secondary accent for visual interest.                           |
-| Vivid Violet | `#6d56fc` | `--color-vivid-violet` | Decorative elements or specific brand highlights within icons, alongside Hot Pink.                                               |
-| Subtle Cream | `#f7fafc` | `--color-subtle-cream` | Alternative background for sections, creating subtle depth on the mostly white page.                                             |
+| Name | Value | Token | Role |
+|------|-------|-------|------|
+| Pitch Black | `#08090a` | `--color-pitch-black` | Page background, primary surface for base elements, subtly integrated into shadows for depth. |
+| Graphite | `#0f1011` | `--color-graphite` | Elevated card backgrounds, slightly lighter than the canvas to denote layering. |
+| Deep Slate | `#161718` | `--color-deep-slate` | Secondary elevated card backgrounds, providing another layer of visual hierarchy. |
+| Charcoal Grey | `#23252a` | `--color-charcoal-grey` | Borders and some shadowed card surfaces, framing elements with a subtle distinction. |
+| Muted Ash | `#323334` | `--color-muted-ash` | Subtle borders and dividers, indicating soft separations within the dark theme. |
+| Gunmetal | `#383b3f` | `--color-gunmetal` | Tertiary background elements and input borders, a darker neutral for functional elements. |
+| Porcelain | `#f7f8f8` | `--color-porcelain` | Primary text and icons, providing strong contrast for readability against dark backgrounds. |
+| Light Steel | `#d0d6e0` | `--color-light-steel` | Secondary text and borders, for less prominent information or structural lines. |
+| Storm Cloud | `#8a8f98` | `--color-storm-cloud` | Tertiary text, descriptive labels, and inactive states, recedes into the background for low-priority details. |
+| Fog Grey | `#62666d` | `--color-fog-grey` | Muted text for metadata, timestamps, and further de-emphasized content. |
+| Alabaster | `#e5e5e6` | `--color-alabaster` | Informational borders and subtle fills, often seen in code blocks or explanatory components. |
+| Neon Lime | `#e4f222` | `--color-neon-lime` | Primary action indicators, active states, and focus elements — a high-energy focal point. |
+| Aether Blue | `#5e6ad2` | `--color-aether-blue` | Decorative highlights and occasional background elements, suggesting a technological or informational context. |
+| Forest Green | `#008d2c` | `--color-forest-green` | Positive status indicators, success messages, and related iconography. |
+| Cyan Spark | `#02b8cc` | `--color-cyan-spark` | Informational highlights and unique icon fills, providing a cool accent. |
+| Emerald | `#27a644` | `--color-emerald` | Success and completion states, often paired with green text. |
+| Warning Red | `#eb5757` | `--color-warning-red` | Observed in icon fill, body borderColor, other fill. Extracted usage does not support a distinct primary control color. |
+| Deep Violet | `#6366f1` | `--color-deep-violet` | Background accents in specific content blocks, indicating a distinct informational category. |
+| Amethyst | `#8b5cf6` | `--color-amethyst` | Another variant of violet for backgrounds, used interchangeably with Deep Violet for visual diversity. |
 
 ## Tokens — Typography
 
-### sans-serif — Smallest text elements, UI labels, and highly functional information. It has a utilitarian feel which contrasts with the custom font for core content. · `--font-sans-serif`
+### Inter Variable — Primary UI typeface for all content including headings, body text, and interactive elements. Its variable weights provide a clean, modern aesthetic with strong technical readability. · `--font-inter-variable`
+- **Substitute:** Inter
+- **Weights:** 300, 400, 510, 590
+- **Sizes:** 10px, 11px, 12px, 13px, 14px, 15px, 16px, 17px, 20px, 24px, 32px, 48px, 64px, 72px
+- **Line height:** 1.00, 1.13, 1.20, 1.33, 1.40, 1.47, 1.50, 1.60, 2.00, 2.46, 2.75
+- **Letter spacing:** -0.22, -0.15, -0.13, -0.12, -0.11, -0.1
+- **OpenType features:** `"cv01", "ss03"`
+- **Role:** Primary UI typeface for all content including headings, body text, and interactive elements. Its variable weights provide a clean, modern aesthetic with strong technical readability.
 
-- **Substitute:** system-ui, 'Segoe UI', Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif
+### Berkeley Mono — Monospaced font for code snippets, technical details, and certain data displays, ensuring consistent character alignment and technical clarity. · `--font-berkeley-mono`
+- **Substitute:** IBM Plex Mono
 - **Weights:** 400
-- **Sizes:** 12px
-- **Line height:** 1.20
-- **Role:** Smallest text elements, UI labels, and highly functional information. It has a utilitarian feel which contrasts with the custom font for core content.
-
-### Open Runde — Primary display font for headings, body text, and key content. Its distinctive features and precise letter-spacing contribute to the crisp, modern feel. The feature settings indicate careful typographic attention. · `--font-open-runde`
-
-- **Substitute:** Inter
-- **Weights:** 400, 500, 600
-- **Sizes:** 14px, 16px, 20px, 32px, 40px, 64px
-- **Line height:** 1.13, 1.20, 1.21, 1.25, 1.40, 1.43, 1.50, 1.71, 1.75
-- **Letter spacing:** -0.037em at 64px, -0.030em at 40px, -0.020em at 32px, -0.012em at 20px, normal at smaller sizes
-- **OpenType features:** `"blwf" on, "cv03" on, "cv04" on, "cv09" on, "cv11" on`
-- **Role:** Primary display font for headings, body text, and key content. Its distinctive features and precise letter-spacing contribute to the crisp, modern feel. The feature settings indicate careful typographic attention.
-
-### Caveat — Handwritten script used for subtle accents like testimonials or decorative elements, providing a human touch to an otherwise structured interface. · `--font-caveat`
-
-- **Substitute:** Sacramento
-- **Weights:** 600
-- **Sizes:** 16px, 24px
-- **Line height:** 1.33, 1.50
-- **Role:** Handwritten script used for subtle accents like testimonials or decorative elements, providing a human touch to an otherwise structured interface.
-
-### Inter — Used for specific body text elements, likely in contexts where Open Runde might be too decorative or less performant. It fills a very specific role, avoiding the system sans-serif. · `--font-inter`
-
-- **Substitute:** Inter
-- **Weights:** 500
-- **Sizes:** 14px
-- **Line height:** 1.43
-- **Role:** Used for specific body text elements, likely in contexts where Open Runde might be too decorative or less performant. It fills a very specific role, avoiding the system sans-serif.
+- **Sizes:** 12px, 13px, 14px
+- **Line height:** 1.30, 1.40, 1.50, 1.71
+- **Letter spacing:** -0.15
+- **Role:** Monospaced font for code snippets, technical details, and certain data displays, ensuring consistent character alignment and technical clarity.
 
 ### Type Scale
 
-| Role       | Size | Line Height | Letter Spacing | Token               |
-| ---------- | ---- | ----------- | -------------- | ------------------- |
-| caption    | 12px | 1.2         | —              | `--text-caption`    |
-| body-sm    | 14px | 1.43        | —              | `--text-body-sm`    |
-| body       | 16px | 1.5         | —              | `--text-body`       |
-| subheading | 20px | 1.25        | -0.24px        | `--text-subheading` |
-| heading    | 32px | 1.21        | -0.64px        | `--text-heading`    |
-| heading-lg | 40px | 1.2         | -1.2px         | `--text-heading-lg` |
-| display    | 64px | 1.13        | -2.368px       | `--text-display`    |
+| Role | Size | Line Height | Letter Spacing | Token |
+|------|------|-------------|----------------|-------|
+| caption | 10px | 1.4 | -0.1px | `--text-caption` |
+| body | 14px | 1.4 | -0.13px | `--text-body` |
+| heading | 24px | 1.33 | -0.22px | `--text-heading` |
+| heading-lg | 48px | 1.2 | -0.22px | `--text-heading-lg` |
+| display | 72px | 1 | -0.22px | `--text-display` |
 
 ## Tokens — Spacing & Shapes
 
 **Base unit:** 4px
 
-**Density:** comfortable
+**Density:** compact
 
 ### Spacing Scale
 
-| Name | Value | Token           |
-| ---- | ----- | --------------- |
-| 4    | 4px   | `--spacing-4`   |
-| 8    | 8px   | `--spacing-8`   |
-| 16   | 16px  | `--spacing-16`  |
-| 20   | 20px  | `--spacing-20`  |
-| 24   | 24px  | `--spacing-24`  |
-| 32   | 32px  | `--spacing-32`  |
-| 40   | 40px  | `--spacing-40`  |
-| 48   | 48px  | `--spacing-48`  |
-| 64   | 64px  | `--spacing-64`  |
-| 80   | 80px  | `--spacing-80`  |
-| 96   | 96px  | `--spacing-96`  |
-| 100  | 100px | `--spacing-100` |
+| Name | Value | Token |
+|------|-------|-------|
+| 4 | 4px | `--spacing-4` |
+| 8 | 8px | `--spacing-8` |
+| 12 | 12px | `--spacing-12` |
+| 16 | 16px | `--spacing-16` |
+| 20 | 20px | `--spacing-20` |
+| 24 | 24px | `--spacing-24` |
+| 28 | 28px | `--spacing-28` |
+| 32 | 32px | `--spacing-32` |
+| 36 | 36px | `--spacing-36` |
+| 40 | 40px | `--spacing-40` |
+| 48 | 48px | `--spacing-48` |
+| 56 | 56px | `--spacing-56` |
+| 64 | 64px | `--spacing-64` |
+| 80 | 80px | `--spacing-80` |
+| 96 | 96px | `--spacing-96` |
+| 128 | 128px | `--spacing-128` |
 
 ### Border Radius
 
-| Element | Value  |
-| ------- | ------ |
-| cards   | 20px   |
-| badges  | 1250px |
-| images  | 32px   |
-| buttons | 100px  |
+| Element | Value |
+|---------|-------|
+| pill | 9999px |
+| tags | 2px |
+| cards | 6px |
+| badges | 4px |
+| inputs | 6px |
+| buttons | 6px |
+| default | 6px |
 
 ### Shadows
 
-| Name     | Value                                                          | Token               |
-| -------- | -------------------------------------------------------------- | ------------------- |
-| subtle   | `rgba(0, 0, 0, 0.06) 0px 2.5px 2.5px 0px`                      | `--shadow-subtle`   |
-| subtle-2 | `rgb(36, 38, 40) 0px 0px 0px 1px, rgba(27, 28, 29, 0.48) 0...` | `--shadow-subtle-2` |
+| Name | Value | Token |
+|------|-------|-------|
+| sm | `rgba(0, 0, 0, 0.4) 0px 2px 4px 0px` | `--shadow-sm` |
+| md | `rgba(0, 0, 0, 0.2) 0px 0px 12px 0px inset` | `--shadow-md` |
+| subtle | `rgb(35, 37, 42) 0px 0px 0px 1px inset` | `--shadow-subtle` |
+| subtle-2 | `rgba(0, 0, 0, 0.2) 0px 0px 0px 1px` | `--shadow-subtle-2` |
+| subtle-3 | `rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) ...` | `--shadow-subtle-3` |
+| xl | `rgba(8, 9, 10, 0.6) 0px 4px 32px 0px` | `--shadow-xl` |
+| subtle-4 | `rgba(0, 0, 0, 0.1) 0px 0px 0px 2px` | `--shadow-subtle-4` |
+| subtle-5 | `rgba(0, 0, 0, 0.33) 0px 0px 0px 1px` | `--shadow-subtle-5` |
+| subtle-6 | `rgba(255, 255, 255, 0.03) 0px 0px 0px 1px inset, rgba(255...` | `--shadow-subtle-6` |
 
 ### Layout
 
-- **Page max-width:** 1200px
-- **Section gap:** 40-80px
-- **Card padding:** 24px
-- **Element gap:** 4-24px
+- **Section gap:** 24px
+- **Card padding:** 12px
+- **Element gap:** 8px
 
 ## Components
 
 ### Primary Action Button
+**Role:** Call to action button
 
-**Role:** Call to action, e.g. 'Create an invoice'
+Filled button with 'Neon Lime' background (#e4f222), 'Pitch Black' text (#08090a), 6px border-radius, and variable padding. Used for primary user actions.
 
-Text: Open Runde, weight 400, color Canvas White. Background: Button Black (#0d111b). Hover/Active: No explicit hover state, implies primary color changes or subtle elevation. Radius: 100px (fully pill-shaped). Padding: 6px vertical, 14px horizontal. Shadow: Subtle dark shadow rgb(36, 38, 40) 0px 0px 0px 1px, rgba(27, 28, 29, 0.48) 0px 1px 2px 0px.
+### Ghost Navigation Button
+**Role:** Navigation and secondary actions
 
-### Navigation Link
+Ghost button with transparent background, 'Porcelain' text (#f7f8f8), no explicit padding, and 0px border-radius. Navigational links or simple interactive elements.
 
-**Role:** Top navigation items
+### Subtle Link Button
+**Role:** Tertiary actions and links
 
-Text: Open Runde, weight 400, color Ash Gray (#8d8d8d) for inactive, Ink Black (#000000) for active/hover. No explicit styling beyond color change, relying on surrounding elements for distinction.
+Ghost button with transparent background, 'Light Steel' text (#d0d6e0), 6px border-radius, and minimal padding (0px top/bottom, 6px left/right). Used for less prominent interactive elements or textual links.
 
-### Invoice Card
+### Navigation Item Button
+**Role:** Sidebar navigation items
 
-**Role:** Displaying invoice previews
+Ghost button with transparent background, 'Storm Cloud' text (#8a8f98), 2px border-radius, and no explicit padding. Used for items in a navigation list.
 
-Background: Canvas White (#ffffff). Radius: 20px. Shadow: subtle rgba(0, 0, 0, 0.06) 0px 2.5px 2.5px 0px. Internal content uses Deep Slate and Open Runde.
+### Default Card
+**Role:** Content container
 
-### Service Feature List Item
+Card with 'Graphite' background (#0f1011), 6px border-radius, and an outer shadow of rgba(0, 0, 0, 0.4) 0px 2px 4px 0px. Padding is 8px on all sides.
 
-**Role:** Highlighting key features below hero
+### Elevated Card
+**Role:** Prominent content container
 
-Text: Open Runde, weight 400, color Graphite (#0f0f0f). Icon: Sky Teal (#0098f2) vector checkmark. Uses 6px elementGap between icon and text.
+Card with 'Deep Slate' background (#161718), 12px top border-radius (0px bottom), and an inset shadow of rgb(35, 37, 42) 0px 0px 0px 1px. Padding is 24px vertical and 0px horizontal.
 
-### Small Header Button
+### Nested Card
+**Role:** Internal content grouping
 
-**Role:** Secondary action in header, e.g. 'Log in'
+Card with 'Pitch Black' background (#08090a) and 12px border-radius, no shadow. Padding 8px on all sides, used for containing sub-elements within larger cards.
 
-Text: Open Runde, weight 400, color Ash Gray (#8d8d8d). No background or border, relies on text color to differentiate from primary button.
+### Input Field
+**Role:** User input fields
 
-### Sign Up Header Button
+Input field with transparent background, 'Porcelain' text (#f7f8f8), 'Charcoal Grey' border (#23252a), and 6px border-radius. Padding is 12px vertical and 14px horizontal.
 
-**Role:** Primary action in header
+### Subtle Input Field
+**Role:** Search or secondary input fields
 
-Text: Open Runde, weight 400, color Canvas White (#ffffff). Background: Button Black (#0d111b). Radius: 100px. Padding: 6px vertical, 14px horizontal.
+Input field with 'Gunmetal' background (#383b3f), 'Porcelain' text (#f7f8f8), no explicit border, and 0px border-radius. Used for less emphasized data entry.
+
+### Badge
+**Role:** Label or tag
+
+Badge with a 'Gunmetal' background (#383b3f), 'Storm Cloud' text (#8a8f98), 4px border-radius, and padding of 0px vertical and 6px horizontal. Used for small categorical labels.
 
 ## Do's and Don'ts
 
 ### Do
-
-- Use '#ffffff' Canvas White as the dominant page and card background color; establish visual hierarchy through subtle shade differences like '#f7fafc' for alternating sections.
-- Apply Open Runde for all main headings and body text, varying weights (400, 500, 600) and sizes according to the type scale for clear hierarchy and visual appeal.
-- Employ the 100px radius for all interactive buttons and pill-shaped elements to maintain a consistent soft, approachable shape.
-- Utilize Sky Teal (#0098f2) exclusively for interactive elements like links and checkmarks; avoid using it for decorative purposes to preserve its accent meaning.
-- Maintain generous padding, particularly 24px and 40px for section separators and major element spacing, creating a spacious and comfortable information density.
-- When emphasizing short, impactful statements or testimonials, use the Caveat font for a personalized, handwritten touch.
+- Use 'Pitch Black' (#08090a) for the primary page background to establish the dark theme.
+- Apply 'Porcelain' (#f7f8f8) for all primary text and important icons to ensure readability.
+- Highlight primary interactive elements exclusively with 'Neon Lime' (#e4f222) as a background, restricting its use to guide user attention.
+- Create depth and hierarchy by layering surfaces using 'Pitch Black' (#08090a), 'Graphite' (#0f1011), and 'Deep Slate' (#161718) backgrounds.
+- Employ the Inter Variable font family with specific letter-spacing adjustments for all UI text, such as -0.22px for display sizes and -0.11px for body text, to maintain a tight, precise feel.
+- Utilize 6px border-radius for all primary buttons, cards, and input fields to maintain a consistent, subtly rounded aesthetic.
+- Use 'Storm Cloud' (#8a8f98) for secondary text and descriptive labels to recede into the background.
 
 ### Don't
+- Do not introduce additional bright or saturated colors beyond 'Neon Lime' (#e4f222) for interactive elements; maintain its singular role.
+- Avoid using harsh white backgrounds or light-themed patterns, as the system is anchored in a dark mode aesthetic.
+- Do not deviate from the specified typeface choices; 'Inter Variable' and 'Berkeley Mono' are fundamental to the visual identity.
+- Refrain from using strong, diffuse shadows; elevation is achieved through subtle layering and sharp, contained shadows like rgba(0, 0, 0, 0.4) 0px 2px 4px 0px.
+- Do not apply broad, decorative background gradients across large sections of the UI; gradients are subtle and contained to specific functional areas.
+- Do not use generic border-radii; adhere to 6px for key components like cards and buttons, and 2px for smaller tags, to preserve the signature balance of softness and precision.
+- Avoid large amounts of white space; the design is compact, leveraging an 8px element gap as a standard measurement.
 
-- Do not introduce new chromatic colors beyond Sky Teal, Hot Pink, and Vivid Violet; the design strictly adheres to an achromatic base with minimal, deliberate color accents.
-- Avoid box shadows for general elevation; leverage subtle background color changes (e.g., #f7fafc) or thin borders to suggest depth and separation.
-- Do not use system sans-serif for headlines or prominent body text; reserve it for small, functional UI labels where its simplicity is an asset.
-- Do not deviate from the established letter-spacing values for Open Runde; these are carefully calibrated for optimal legibility at different sizes.
-- Avoid dense, information-heavy sections without adequate whitespace; the design's strength lies in its spacious and clear presentation.
-- Do not use multiple font sizes or weights within a single line of text unless it's a clearly defined component. Maintain typographic consistency.
+## Surfaces
+
+| Level | Name | Value | Purpose |
+|-------|------|-------|---------|
+| 0 | Pitch Black Canvas | `#08090a` | Base page background and deepest surface level. |
+| 1 | Graphite Card | `#0f1011` | Primary card surface for general content, slightly elevated from the canvas. |
+| 2 | Deep Slate Elevated Card | `#161718` | More prominent card surface, used for focused content sections or lists. |
+| 3 | Charcoal Grey Overlay | `#23252a` | Accent surface for borders, shadows, and subtle overlays, providing clear separation. |
+
+## Elevation
+
+- **Default Card:** `rgba(0, 0, 0, 0.4) 0px 2px 4px 0px`
+- **Sidebar/Menu Element Focus:** `rgba(0, 0, 0, 0.2) 0px 0px 12px 0px inset`
+- **Elevated Card Inset:** `rgb(35, 37, 42) 0px 0px 0px 1px inset`
+- **Card Border/Input Focus:** `rgba(0, 0, 0, 0.2) 0px 0px 0px 1px`
+- **Navigation/Button Subtle Lift:** `rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px`
 
 ## Imagery
 
-The site uses a mix of tightly cropped, top-down product photography featuring office supplies (paperclips, pens, keyboard snippets) on a clean white desk, serving as decorative framing for UI elements. Embedded product screenshots show the invoice interface directly, providing clear, functional examples of the software. Icons are primarily line-based, monochrome (Ink Black), with occasional small fills of the brand's accent colors (Sky Teal, Hot Pink, Vivid Violet). The imagery's role is decorative atmosphere, combined with direct product showcasing to explain functionality, rather than lifestyle or abstract concepts.
+The site's visual language is dominated by UI elements and product screenshots, emphasizing functionality over decorative imagery. Where images appear, they are often contained within realistic product mockups or embedded application frames. Abstract graphics are minimal, primarily serving as subtle background textures or data visualizations. Icons are filled, minimalist, and mono-color, often adopting the 'Porcelain' (#f7f8f8) or 'Storm Cloud' (#8a8f98) neutral palette, enhancing the dashboard aesthetic. The overall density of imagery is low; it serves an explanatory or product showcase role rather than a decorative one.
 
 ## Layout
 
-The page model is a max-width 1200px centered container, creating generous margins on larger screens. The hero section features a centered headline over a white background, flanked by decorative product photography. Sections primarily follow a consistent vertical rhythm with ample spacing (40-80px), often presenting content as centered stacks or simple two-column layouts. A subtle alternating background color ('Subtle Cream') differentiates some sections. Navigation is a fixed top bar with a logo, standard links, and 'Log in'/'Sign up' buttons. Content density is comfortable, prioritizing readability and visual breathing room.
+The page primarily uses a full-bleed structure for background content, with main content sections constrained by a centered maximum width (not explicitly defined but visually present). The hero section features a full-bleed 'Pitch Black' background with a centered, prominent headline. Subsequent sections alternate between dark backgrounds for narrative content and embedded UI examples, often featuring split layouts (text on one side, product UI on the other). Content is generally arranged in vertical stacks or multi-column grids for feature display. Navigation consists of a sticky top bar and frequently observed left-hand sidebar for application-like structures. Spacing is compact yet deliberate, creating a dense but organized information flow.
 
 ## Agent Prompt Guide
 
-## Quick Color Reference
+Quick Color Reference:
+- text: #f7f8f8 (Porcelain)
+- background: #08090a (Pitch Black)
+- border: #23252a (Charcoal Grey)
+- accent: #5e6ad2 (Aether Blue)
+- primary action: #e4f222 (filled action)
 
-- Text: #000000 Ink Black
-- Background: #ffffff Canvas White
-- CTA Background: #0d111b Button Black
-- CTA Text: #ffffff Canvas White
-- Links/Accent: #0098f2 Sky Teal
-- Secondary Text/Disabled: #8d8d8d Ash Gray
-
-## 3-5 Example Component Prompts
-
-1. Create a hero section: 'Canvas White' background. Headline 'Invoices that work harder' using 'display' role of Open Runde, weight 600, color '#000000' Ink Black, letter-spacing -2.368px. Subtext 'Acctual offers more payment methods and no monthly fees...' at 'body' role Open Runde, weight 400, color '#1e1e1' Deep Slate. Primary button 'Create an invoice': background '#0d111b' Button Black, text '#ffffff' Canvas White, 100px radius, 6px 14px padding. Below the button, add three feature indicators: 'Sky Teal' checkmark icon, followed by text 'Same day payouts' using 'body-sm' role Open Runde, weight 400, color '#0f0f0f' Graphite.
-2. Design a Testimonial Card: 'Canvas White' background, 20px radius, rgba(0, 0, 0, 0.06) 0px 2.5px 2.5px 0px shadow. Headline text '"Acctual makes invoices so easy."' using 'heading' role of Open Runde, weight 600, color '#000000' Ink Black. Attributed text 'Marcel Kargul, founder of Kargul Studio' using 'body' role of Caveat, weight 600, color '#8d8d8d' Ash Gray.
-3. Implement a Navigation Bar: 'Canvas White' background. Logo at left. Navigation links 'Invoicing', 'Pricing', 'Blog', 'Guides' using Open Runde, weight 400, color '#8d8d8d' Ash Gray for inactive and '#000000' Ink Black for active/hover. 'Log in' button as text-only, Open Runde, weight 400, color '#8d8d8d' Ash Gray. 'Sign up for free' button: background '#0d111b' Button Black, text '#ffffff' Canvas White, 100px radius, 6px 14px padding.
+3-5 Example Component Prompts:
+- Create a call-to-action button: 'Neon Lime' background (#e4f222), 'Pitch Black' text (#08090a), Inter Variable font weight 590 at 15px, 6px border-radius, 12px vertical and 24px horizontal padding.
+- Create a default card with content: 'Graphite' background (#0f1011), 6px border-radius, rgba(0, 0, 0, 0.4) 0px 2px 4px 0px shadow. Inside, use Inter Variable font weight 400 at 14px with 'Porcelain' text (#f7f8f8), and a subsection headline at 17px weight 510 with 'Porcelain' text (#f7f8f8). Apply 8px padding internally.
+- Create a sidebar navigation item: Ghost button with transparent background, 'Storm Cloud' text (#8a8f98), Inter Variable font weight 400 at 14px, 2px border-radius, no padding.
+- Create an input field: transparent background with a 'Gunmetal' fill (#383b3f), 'Light Steel' text (#d0d6e0) using Inter Variable font weight 400 at 14px, 6px border-radius. Inset with a 1px 'Charcoal Grey' border (#23252a). Padding 12px vertical and 14px horizontal.
 
 ## Similar Brands
 
-- **Stripe** — Clean, high-contrast, mostly achromatic UI with strong typography and minimal, deliberate accent colors defining interactive elements.
-- **Linear** — Emphasis on precise typography, carefully calibrated spacing, and a focus on clarity through strict visual hierarchy rather than heavy ornamentation.
-- **Mercury Bank** — Modern fintech aesthetic with an abundance of whitespace, subtle grays, and a crisp, professional feeling driven by strong legibility and structured layouts.
-- **Pitch** — Combines prominent, well-crafted typography with a largely neutral palette and strategic use of a single vibrant accent color to guide the eye and denote interactivity.
+- **Vercel** — Dark UI with strong typography, geometric layouts, and selective use of brand accent colors for interactivity.
+- **GitHub** — Emphasis on functional, dark-themed UI for developer tools, prioritizing information density and code readability.
+- **Notion (dark mode)** — Layered dark surfaces creating depth, clear typography, and a subdued palette for a productivity application.
+- **Raycast** — High-contrast dark mode, minimalist design, and an emphasis on technical tools with clear interaction points.
 
 ## Quick Start
 
@@ -212,91 +243,111 @@ The page model is a max-width 1200px centered container, creating generous margi
 ```css
 :root {
   /* Colors */
-  --color-canvas-white: #ffffff;
-  --color-ink-black: #000000;
-  --color-graphite: #0f0f0f;
-  --color-deep-slate: #1e1e1;
-  --color-ash-gray: #8d8d8d;
-  --color-button-black: #0d111b;
-  --color-sky-teal: #0098f2;
-  --color-hot-pink: #f200ca;
-  --color-vivid-violet: #6d56fc;
-  --color-subtle-cream: #f7fafc;
+  --color-pitch-black: #08090a;
+  --color-graphite: #0f1011;
+  --color-deep-slate: #161718;
+  --color-charcoal-grey: #23252a;
+  --color-muted-ash: #323334;
+  --color-gunmetal: #383b3f;
+  --color-porcelain: #f7f8f8;
+  --color-light-steel: #d0d6e0;
+  --color-storm-cloud: #8a8f98;
+  --color-fog-grey: #62666d;
+  --color-alabaster: #e5e5e6;
+  --color-neon-lime: #e4f222;
+  --color-aether-blue: #5e6ad2;
+  --color-forest-green: #008d2c;
+  --color-cyan-spark: #02b8cc;
+  --color-emerald: #27a644;
+  --color-warning-red: #eb5757;
+  --color-deep-violet: #6366f1;
+  --color-amethyst: #8b5cf6;
 
   /* Typography — Font Families */
-  --font-sans-serif: 'sans-serif', ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-open-runde: 'Open Runde', ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-caveat: 'Caveat', ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-inter-variable: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-berkeley-mono: 'Berkeley Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Typography — Scale */
-  --text-caption: 12px;
-  --leading-caption: 1.2;
-  --text-body-sm: 14px;
-  --leading-body-sm: 1.43;
-  --text-body: 16px;
-  --leading-body: 1.5;
-  --text-subheading: 20px;
-  --leading-subheading: 1.25;
-  --tracking-subheading: -0.24px;
-  --text-heading: 32px;
-  --leading-heading: 1.21;
-  --tracking-heading: -0.64px;
-  --text-heading-lg: 40px;
+  --text-caption: 10px;
+  --leading-caption: 1.4;
+  --tracking-caption: -0.1px;
+  --text-body: 14px;
+  --leading-body: 1.4;
+  --tracking-body: -0.13px;
+  --text-heading: 24px;
+  --leading-heading: 1.33;
+  --tracking-heading: -0.22px;
+  --text-heading-lg: 48px;
   --leading-heading-lg: 1.2;
-  --tracking-heading-lg: -1.2px;
-  --text-display: 64px;
-  --leading-display: 1.13;
-  --tracking-display: -2.368px;
+  --tracking-heading-lg: -0.22px;
+  --text-display: 72px;
+  --leading-display: 1;
+  --tracking-display: -0.22px;
 
   /* Typography — Weights */
+  --font-weight-light: 300;
   --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
+  --font-weight-w510: 510;
+  --font-weight-w590: 590;
 
   /* Spacing */
   --spacing-unit: 4px;
   --spacing-4: 4px;
   --spacing-8: 8px;
+  --spacing-12: 12px;
   --spacing-16: 16px;
   --spacing-20: 20px;
   --spacing-24: 24px;
+  --spacing-28: 28px;
   --spacing-32: 32px;
+  --spacing-36: 36px;
   --spacing-40: 40px;
   --spacing-48: 48px;
+  --spacing-56: 56px;
   --spacing-64: 64px;
   --spacing-80: 80px;
   --spacing-96: 96px;
-  --spacing-100: 100px;
+  --spacing-128: 128px;
 
   /* Layout */
-  --page-max-width: 1200px;
-  --section-gap: 40-80px;
-  --card-padding: 24px;
-  --element-gap: 4-24px;
+  --section-gap: 24px;
+  --card-padding: 12px;
+  --element-gap: 8px;
 
   /* Border Radius */
+  --radius-sm: 2px;
+  --radius-md: 6px;
   --radius-xl: 12px;
   --radius-2xl: 16px;
-  --radius-2xl-2: 20px;
-  --radius-3xl: 32px;
-  --radius-full: 100px;
-  --radius-full-2: 1250px;
+  --radius-2xl-2: 22px;
+  --radius-full: 400px;
+  --radius-full-2: 9999px;
 
   /* Named Radii */
-  --radius-cards: 20px;
-  --radius-badges: 1250px;
-  --radius-images: 32px;
-  --radius-buttons: 100px;
+  --radius-pill: 9999px;
+  --radius-tags: 2px;
+  --radius-cards: 6px;
+  --radius-badges: 4px;
+  --radius-inputs: 6px;
+  --radius-buttons: 6px;
+  --radius-default: 6px;
 
   /* Shadows */
-  --shadow-subtle: rgba(0, 0, 0, 0.06) 0px 2.5px 2.5px 0px;
-  --shadow-subtle-2: rgb(36, 38, 40) 0px 0px 0px 1px,
-    rgba(27, 28, 29, 0.48) 0px 1px 2px 0px;
+  --shadow-sm: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.2) 0px 0px 12px 0px inset;
+  --shadow-subtle: rgb(35, 37, 42) 0px 0px 0px 1px inset;
+  --shadow-subtle-2: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
+  --shadow-subtle-3: rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px;
+  --shadow-xl: rgba(8, 9, 10, 0.6) 0px 4px 32px 0px;
+  --shadow-subtle-4: rgba(0, 0, 0, 0.1) 0px 0px 0px 2px;
+  --shadow-subtle-5: rgba(0, 0, 0, 0.33) 0px 0px 0px 1px;
+  --shadow-subtle-6: rgba(255, 255, 255, 0.03) 0px 0px 0px 1px inset, rgba(255, 255, 255, 0.04) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 4px 0px;
+
+  /* Surfaces */
+  --surface-pitch-black-canvas: #08090a;
+  --surface-graphite-card: #0f1011;
+  --surface-deep-slate-elevated-card: #161718;
+  --surface-charcoal-grey-overlay: #23252a;
 }
 ```
 
@@ -305,72 +356,83 @@ The page model is a max-width 1200px centered container, creating generous margi
 ```css
 @theme {
   /* Colors */
-  --color-canvas-white: #ffffff;
-  --color-ink-black: #000000;
-  --color-graphite: #0f0f0f;
-  --color-deep-slate: #1e1e1;
-  --color-ash-gray: #8d8d8d;
-  --color-button-black: #0d111b;
-  --color-sky-teal: #0098f2;
-  --color-hot-pink: #f200ca;
-  --color-vivid-violet: #6d56fc;
-  --color-subtle-cream: #f7fafc;
+  --color-pitch-black: #08090a;
+  --color-graphite: #0f1011;
+  --color-deep-slate: #161718;
+  --color-charcoal-grey: #23252a;
+  --color-muted-ash: #323334;
+  --color-gunmetal: #383b3f;
+  --color-porcelain: #f7f8f8;
+  --color-light-steel: #d0d6e0;
+  --color-storm-cloud: #8a8f98;
+  --color-fog-grey: #62666d;
+  --color-alabaster: #e5e5e6;
+  --color-neon-lime: #e4f222;
+  --color-aether-blue: #5e6ad2;
+  --color-forest-green: #008d2c;
+  --color-cyan-spark: #02b8cc;
+  --color-emerald: #27a644;
+  --color-warning-red: #eb5757;
+  --color-deep-violet: #6366f1;
+  --color-amethyst: #8b5cf6;
 
   /* Typography */
-  --font-sans-serif: 'sans-serif', ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-open-runde: 'Open Runde', ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-caveat: 'Caveat', ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-inter-variable: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-berkeley-mono: 'Berkeley Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Typography — Scale */
-  --text-caption: 12px;
-  --leading-caption: 1.2;
-  --text-body-sm: 14px;
-  --leading-body-sm: 1.43;
-  --text-body: 16px;
-  --leading-body: 1.5;
-  --text-subheading: 20px;
-  --leading-subheading: 1.25;
-  --tracking-subheading: -0.24px;
-  --text-heading: 32px;
-  --leading-heading: 1.21;
-  --tracking-heading: -0.64px;
-  --text-heading-lg: 40px;
+  --text-caption: 10px;
+  --leading-caption: 1.4;
+  --tracking-caption: -0.1px;
+  --text-body: 14px;
+  --leading-body: 1.4;
+  --tracking-body: -0.13px;
+  --text-heading: 24px;
+  --leading-heading: 1.33;
+  --tracking-heading: -0.22px;
+  --text-heading-lg: 48px;
   --leading-heading-lg: 1.2;
-  --tracking-heading-lg: -1.2px;
-  --text-display: 64px;
-  --leading-display: 1.13;
-  --tracking-display: -2.368px;
+  --tracking-heading-lg: -0.22px;
+  --text-display: 72px;
+  --leading-display: 1;
+  --tracking-display: -0.22px;
 
   /* Spacing */
   --spacing-4: 4px;
   --spacing-8: 8px;
+  --spacing-12: 12px;
   --spacing-16: 16px;
   --spacing-20: 20px;
   --spacing-24: 24px;
+  --spacing-28: 28px;
   --spacing-32: 32px;
+  --spacing-36: 36px;
   --spacing-40: 40px;
   --spacing-48: 48px;
+  --spacing-56: 56px;
   --spacing-64: 64px;
   --spacing-80: 80px;
   --spacing-96: 96px;
-  --spacing-100: 100px;
+  --spacing-128: 128px;
 
   /* Border Radius */
+  --radius-sm: 2px;
+  --radius-md: 6px;
   --radius-xl: 12px;
   --radius-2xl: 16px;
-  --radius-2xl-2: 20px;
-  --radius-3xl: 32px;
-  --radius-full: 100px;
-  --radius-full-2: 1250px;
+  --radius-2xl-2: 22px;
+  --radius-full: 400px;
+  --radius-full-2: 9999px;
 
   /* Shadows */
-  --shadow-subtle: rgba(0, 0, 0, 0.06) 0px 2.5px 2.5px 0px;
-  --shadow-subtle-2: rgb(36, 38, 40) 0px 0px 0px 1px,
-    rgba(27, 28, 29, 0.48) 0px 1px 2px 0px;
+  --shadow-sm: rgba(0, 0, 0, 0.4) 0px 2px 4px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.2) 0px 0px 12px 0px inset;
+  --shadow-subtle: rgb(35, 37, 42) 0px 0px 0px 1px inset;
+  --shadow-subtle-2: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
+  --shadow-subtle-3: rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px;
+  --shadow-xl: rgba(8, 9, 10, 0.6) 0px 4px 32px 0px;
+  --shadow-subtle-4: rgba(0, 0, 0, 0.1) 0px 0px 0px 2px;
+  --shadow-subtle-5: rgba(0, 0, 0, 0.33) 0px 0px 0px 1px;
+  --shadow-subtle-6: rgba(255, 255, 255, 0.03) 0px 0px 0px 1px inset, rgba(255, 255, 255, 0.04) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 4px 0px;
 }
 ```

@@ -1,0 +1,127 @@
+{
+  "common": {
+    "appName": "FilmGueh"
+  },
+  "hero": {
+    "title": "Find & Save Your Favorite Movies",
+    "subtitle": "Discover thousands of movies, save to your personal collection, and track your watchlist."
+  },
+  "features": {
+    "title": "Everything You Need",
+    "subtitle": "All the tools to manage, track, and enjoy your movie collection.",
+    "database": {
+      "title": "Complete Database",
+      "description": "Access millions of movies from TMDB and OMDb. Search by title, view synopses, posters, genres, and ratings."
+    },
+    "collection": {
+      "title": "Personal Collection",
+      "description": "Save movies to your collection. Mark them as Watched, Plan to Watch, or Dropped."
+    },
+    "stats": {
+      "title": "Interesting Stats",
+      "description": "View collection summary: total movies, by category, favorite genres, and highest ratings."
+    },
+    "more": {
+      "title": "And More",
+      "description": "1-5 ratings, personal notes, filters and sorting, collection search, and much more."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "movies": "My Movies",
+    "search": "Search",
+    "about": "About"
+  },
+  "cta": {
+    "getStarted": "Get Started",
+    "addToCollection": "Add to Collection",
+    "save": "Save",
+    "cancel": "Cancel",
+    "remove": "Remove",
+    "confirmRemove": "Yes, Remove",
+    "close": "Close",
+    "tryAgain": "Try Again",
+    "clearFilters": "Clear Filters",
+    "resetData": "Reset Data"
+  },
+  "search": {
+    "initial": "Find movies to add to your collection. Start typing above.",
+    "loading": "Searching for \"{query}\"...",
+    "results": "{count} results for \"{query}\"",
+    "noResults": "No movies found for \"{query}\". Check the spelling or try a different title.",
+    "error": "Could not search right now. Please try again.",
+    "duplicate": "Already in your collection"
+  },
+  "collection": {
+    "empty": "Your collection is empty. Search movies and start building your watchlist.",
+    "noMatch": "No movies match \"{filter}\". Try a different category or genre.",
+    "noSearchMatch": "No movies matching \"{query}\" in your collection.",
+    "corrupt": "Something went wrong loading your collection. You can reset the data and start fresh."
+  },
+  "tracker": {
+    "added": "\"{title}\" added to your collection.",
+    "alreadyExists": "\"{title}\" is already in your collection.",
+    "chooseCategory": "Add to...",
+    "category": {
+      "watched": "Watched",
+      "planToWatch": "Plan to Watch",
+      "dropped": "Dropped"
+    },
+    "changesSaved": "Changes saved.",
+    "confirmDelete": "Remove \"{title}\" from your collection? This cannot be undone.",
+    "removed": "\"{title}\" removed from your collection."
+  },
+  "filter": {
+    "allCategories": "All Categories",
+    "watched": "Watched",
+    "planToWatch": "Plan to Watch",
+    "dropped": "Dropped",
+    "sort": {
+      "titleAsc": "Title A-Z",
+      "titleDesc": "Title Z-A",
+      "ratingHigh": "Highest Rated",
+      "ratingLow": "Lowest Rated",
+      "newest": "Recently Added",
+      "oldest": "Oldest First"
+    },
+    "clearAll": "Clear all filters",
+    "stats": "{total} movies · {watched} watched · {plan} plan to watch · {dropped} dropped"
+  },
+  "errors": {
+    "apiUnavailable": "Can't search right now — TMDB is unavailable. Please check your connection and try again.",
+    "fallbackSource": "Using alternative source. Search results may vary.",
+    "offline": "You're offline. Your collection is still accessible."
+  },
+  "rating": {
+    "notRated": "Rate this movie",
+    "rateThis": "Your rating: {value}/5",
+    "labels": {
+      "1": "Terrible",
+      "2": "Bad",
+      "3": "Okay",
+      "4": "Good",
+      "5": "Excellent"
+    }
+  },
+  "footer": {
+    "tagline": "Track every movie you watch.",
+    "poweredBy": "Powered by",
+    "discover": "Discover",
+    "about": "About",
+    "version": "v1.0.0",
+    "buyMeCoffee": "Buy me a coffee",
+    "followUs": "Follow us",
+    "copyright": "All rights reserved."
+  },
+  "header": {
+    "switchLanguage": "Switch to English",
+    "toggleTheme": "Toggle Theme",
+    "switchToEn": "Switch to English",
+    "switchToId": "Switch to Bahasa Indonesia"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Sorry, the page you are looking for does not exist.",
+    "backHome": "Back to Home"
+  }
+}

@@ -3,40 +3,29 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { Button, buttonVariants, Typography } from '@/components/ui';
-import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
+import { Button, buttonVariants, MenuToggleIcon, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui';
 import { paths } from '@/config/paths';
-import { navLinks, siteConfig } from '@/config/site';
 import {
   ACTION_2_ICONS,
   ICON_SIZES,
   ICON_STROKE,
   type Action2IconKey,
 } from '@/constants/icons';
-import { useLanguage } from '@/contexts/language-context';
-import { useScroll } from '@/hooks/use-scroll';
+import { useHeader } from '@/hooks/use-header';
 import { cn } from '@/utils/cn';
 
 export function Header() {
-  const [open, setOpen] = React.useState(false);
-  const { language } = useLanguage();
-  const scrolled = useScroll(10);
-
-  React.useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [open]);
-
-  const navLabels = {
-    movies: language === 'id' ? 'Film' : 'Movies',
-    search: language === 'id' ? 'Cari' : 'Search',
-  };
+  const {
+    open,
+    setOpen,
+    scrolled,
+    locale,
+    navLinks,
+    toggleLanguage,
+    getNavLabel,
+    isActive,
+    closeMobileMenu,
+  } = useHeader();
 
   const createIconElement = (key: Action2IconKey, className: string) => {
     const IconComponent = ACTION_2_ICONS[key];
@@ -44,6 +33,10 @@ export function Header() {
       className,
       strokeWidth: ICON_STROKE.default,
     });
+  };
+
+  const handleLocaleChange = (value: string) => {
+    toggleLanguage(value);
   };
 
   return (
@@ -67,51 +60,44 @@ export function Header() {
       >
         <Link
           href={paths.home.getHref()}
-          className="font-mono text-lg font-semibold tracking-tight md:ms-2"
+          className="text-lg font-semibold tracking-tight md:ms-2"
         >
-          {siteConfig.name}
+          FilmGueh
         </Link>
-
-
 
         <div className="hidden items-center gap-1 md:flex">
           <div className="hidden items-center gap-10 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-            >
-              <Typography.Text size="sm">
-              {link.label}
-              </Typography.Text>
-            </Link>
-          ))}
-        </div>
+            {navLinks.map((link) => (
+              <Link
+                key={link.key}
+                href={link.getHref()}
+                className={cn(
+                  'flex items-center gap-2 border-b-2 pb-1 text-sm transition-colors',
+                  isActive(link.href)
+                    ? 'border-primary text-foreground'
+                    : 'border-transparent text-muted-foreground hover:border-muted-foreground/50 hover:text-foreground',
+                )}
+              >
+                {getNavLabel(link.label)}
+              </Link>
+            ))}
+          </div>
           <div className="mx-2 h-4 w-px bg-border" />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => {}}
-            className="size-8 rounded-full"
-            title={language === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia'}
-          >
-            {createIconElement('languages', ICON_SIZES.sm)}
-            <span className="sr-only">
-              {language === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia'}
-            </span>
-          </Button>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="size-8 rounded-full"
-            title={language === 'id' ? 'Ganti Tema' : 'Toggle Theme'}
-          >
+          {/* <Select value={locale} onValueChange={handleLocaleChange}>
+            <SelectTrigger className="h-8 w-[70px] text-xs">
+              <SelectValue placeholder="Lang" />
+            </SelectTrigger>
+            <SelectContent align="end">
+              <SelectItem value="en">EN</SelectItem>
+              <SelectItem value="id">ID</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Button variant="ghost" size="icon" className="size-8 rounded-full">
             {createIconElement('moon', ICON_SIZES.sm)}
-            <span className="sr-only">
-              {language === 'id' ? 'Ganti Tema' : 'Toggle Theme'}
-            </span>
-          </Button>
+            <span className="sr-only">Toggle Theme</span>
+          </Button> */}
 
           <div className="mx-2 h-4 w-px bg-border" />
 
@@ -146,51 +132,37 @@ export function Header() {
           <div className="grid gap-y-1">
             {navLinks.map((link) => (
               <Link
-                key={link.label}
+                key={link.key}
+                href={link.getHref()}
+                onClick={closeMobileMenu}
                 className={buttonVariants({
-                  variant: 'ghost',
+                  variant: isActive(link.href) ? 'secondary' : 'ghost',
                   className: 'justify-start',
                 })}
-                href={link.href}
-                onClick={() => setOpen(false)}
               >
-                {link.label === 'Movies'
-                  ? navLabels.movies
-                  : link.label === 'Search'
-                    ? navLabels.search
-                    : link.label}
+                {getNavLabel(link.label)}
               </Link>
             ))}
           </div>
 
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {}}
-                className="flex-1 rounded-full"
-              >
-                {createIconElement('languages', ICON_SIZES.sm)}
-                <span className="ms-2">
-                  {language === 'id' ? 'English' : 'Bahasa Indonesia'}
-                </span>
-              </Button>
+              <Select value={locale} onValueChange={handleLocaleChange}>
+                <SelectTrigger className="flex-1 h-9 text-sm">
+                  <SelectValue placeholder="Language" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="en">English</SelectItem>
+                  <SelectItem value="id">Bahasa Indonesia</SelectItem>
+                </SelectContent>
+              </Select>
 
-              <Button
-                variant="outline"
-                size="sm"
-                className="size-9 rounded-full"
-              >
+              <Button variant="outline" size="sm" className="size-9 rounded-full">
                 {createIconElement('moon', ICON_SIZES.sm)}
               </Button>
             </div>
 
-            <Button
-              className="w-full rounded-full"
-              asChild
-              onClick={() => setOpen(false)}
-            >
+            <Button className="w-full rounded-full" asChild onClick={closeMobileMenu}>
               <Link href={paths.movies.getHref()}>Get Started</Link>
             </Button>
           </div>

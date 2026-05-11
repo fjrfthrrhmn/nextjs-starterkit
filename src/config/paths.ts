@@ -11,4 +11,7 @@ export const paths = {
   search: {
     getHref: (query: string) => `/search?q=${encodeURIComponent(query)}`,
   },
+  about: {
+    getHref: () => '/about',
+  },
 } as const;

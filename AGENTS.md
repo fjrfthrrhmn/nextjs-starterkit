@@ -1,5 +1,279 @@
 # AGENTS.md
 
+Dokumen ini adalah **kontrak kolaborasi AI** untuk proyek FilmGueh. Setiap tindakan harus mengikuti aturan yang tertulis di sini untuk memastikan konsistensi, kualitas, dan prediktabilitas output AI.
+
+---
+
+## Sistem Eksekusi Berbasis Skill
+
+Sebelum menyelesaikan tugas, AI **WAJIB** menganalisis dan memilih skill yang paling relevan.
+
+### Skill yang Tersedia
+
+| Skill | Gunakan ketika... |
+|-------|-------------------|
+| `next-best-practices` | Task Next.js routing, RSC, metadata, error handling |
+| `shadcn-ui` | Task komponen UI, forms, dialog, atau styling pattern |
+| `tailwind-design-system` | Task design tokens, component library, atau responsive patterns |
+| `typescript-advanced-types` | Task generics, conditional types, atau type-safe utilities |
+| `zod-validation-expert` | Task schema validation, form handling, atau API validation |
+| `frontend-design` | Task涉及 membuat UI lengkap, landing page, atau design system |
+| `context7-mcp` | Butuh dokumentasi/library terkini untuk framework/library spesifik |
+| `writing-plans` | Task kompleks multi-step yang butuh rencana sebelum eksekusi |
+
+### Proses Seleksi Skill
+
+```
+Analisis Request
+    ↓
+Identifikasi Skill Relevan (1-2 skill maks)
+    ↓
+Justifikasi Internal (untuk task kompleks)
+    ↓
+Eksekusi dengan Mindset Skill
+    ↓
+Verifikasi Output
+```
+
+### Aturan Penggunaan Skill
+
+- **Maksimal 2 skill** per task — avoid overcomplication
+- Jika task tidak match skill manapun, gunakan reasoning umum + best practices
+- Dokumentasi `.docs/` selalu prioritas sebelum skill apapun
+
+---
+
+## Context Awareness
+
+### Proses Pengecekan Dokumentasi
+
+```
+Task Baru
+    ↓
+Cek folder `.docs/` untuk dokumen terkait
+    ↓
+Jika ditemukan → Gunakan sebagai sumber kebenaran
+Jika tidak ditemukan → Gunakan reasoning + best practices
+    ↓
+Eksekusi Task
+```
+
+### Dokumen `.docs/` yang Tersedia
+
+| Dokumen | Topik |
+|---------|-------|
+| `product-definition.md` | Definisi produk |
+| `information-architecture.md` | Arsitektur informasi |
+| `project-structure.md` | Struktur proyek |
+| `project-standards.md` | Standar proyek |
+| `components-and-styling.md` | Komponen UI & styling |
+| `state-management.md` | Strategi state management |
+| `data-fetching.md` | Layer API & data fetching |
+| `api-layer.md` | Detail API layer |
+| `error-handling.md` | Strategi error handling |
+| `performance.md` | Optimasi performa |
+| `testing.md` | Strategi testing |
+| `security.md` | Keamanan aplikasi |
+| `deployment.md` | Build & deployment |
+| `ux-writing.md` | Guidelines UX writing |
+| `design.md` | Design system |
+
+### Aturan Prioritas Dokumen
+
+1. `.docs/` folder — dokumentasi spesifik proyek
+2. `AGENTS.md` — aturan umum & kontrak kolaborasi
+3. Existing code patterns — preseden dari codebase
+4. Best practices umum — fallback jika tidak ada referensi
+
+---
+
+## Kerangka Penalaran
+
+AI mengikuti langkah-langkah ini untuk setiap task:
+
+### 1. Pahami Masalah
+- Baca ulang request pengguna
+- Identifikasi requirement eksplisit dan implisit
+- Clarify jika ada ambiguitas
+
+### 2. Identifikasi Asumsi Tersembunyi
+- Apa yang diasumsikan tentang state saat ini?
+- Apa batasan teknis atau arsitektur?
+- Apa yang tidak boleh diubah?
+
+### 3. Evaluasi Alternatif
+- Apakah ada trade-off yang perlu dipertimbangkan?
+- Apa implikasi jangka pendek vs jangka panjang?
+- Apakah ada solusi yang lebih sederhana?
+
+### 4. Selaraskan dengan Arsitektur
+- Apakah sesuai dengan existing patterns?
+- Apakah melanggar unidirectional flow?
+- Apakah perlu konfirmasi sebelum melanjutkan?
+
+### 5. Produksi Solusi
+- Implementasi sesuai best practices
+- Dokumentasi perubahan jika perlu
+- Verifikasi dengan lint/typecheck/tests
+
+---
+
+## Constraints (Aturan yang WAJIB Diikuti)
+
+### Hal yang TIDAK BOLEH Dilakukan
+
+```markdown
+❌ Jangan abaikan arsitektur yang sudah ada
+❌ Jangan perkenalkan library baru tanpa justifikasi kuat
+❌ Jangan refactor kode yang tidak terkait task
+❌ Jangan bypass sistem tersentralisasi (icons, config, data layer)
+❌ Jangan asumsikan requirement yang hilang — tanya atau nyatakan asumsi
+❌ Jangan buat duplicate abstraction
+❌ Jangan overengineering fitur sederhana
+❌ Jangan violate unidirectional flow
+❌ Jangan skip lint/typecheck sebelum submit
+```
+
+### Kondisi yang Memerlukan Konfirmasi
+
+Sebelum melanjutkan, AI HARUS mengonfirmasi jika:
+
+- Task memerlukan perubahan arsitektur signifikan
+- Perlu introduce library atau dependency baru
+- Melibatkan refactor di luar scope task
+- Requirement tidak jelas atau ambigu
+- Decision yang punya trade-off signifikan
+
+---
+
+## Response Guidelines
+
+### Prinsip Komunikasi
+
+| ситуация | Respons |
+|----------|---------|
+| Task sederhana | Langsung eksekusi, minimal output |
+| Task kompleks | Jelaskan approach, lalu eksekusi |
+| Decision dengan trade-off | Nyatakan options + rekomendasi |
+| Clarification needed | Ajukan pertanyaan spesifik |
+| Error/kegagalan | Nyatakan masalah + proposed fix |
+
+### Standar Output
+
+- **Konsis** — tidak ada preamble/postamble tidak perlu
+- **Aksi** — fokus pada apa yang dilakukan, bukan teori
+- **Terstruktur** — gunakan format yang konsisten
+- **Tepat** — hanya informasi yang diperlukan
+
+### Contoh Respons Buruk vs Baik
+
+```markdown
+# ❌ Buruk
+"Berikut adalah implementasi dari fitur yang Anda minta. Saya membuat komponen baru
+yang terdiri dari beberapa file karena saya pikir itu perlu untuk skalabilitas.
+Semoga bermanfaat!"
+
+# ✅ Baik
+[tidak ada intro]
+[membuat file dengan pattern yang ada]
+[tidak ada outro]
+```
+
+---
+
+## Anti-Patterns
+
+### Tanda-Tanda AI Bermasalah
+
+| Pattern | Masalah | Solusi |
+|---------|---------|--------|
+| Overengineering | Kompleksitas tidak perlu | KISS principle |
+| Duplicate code | Abstraksi tidak perlu | Shared utilities |
+| Cross-feature import | Violasi arsitektur | Perbaiki boundary |
+| Magic numbers/strings | Hardcoded values | Konstanta terpusat |
+| Prop drilling | Tight coupling | Composition pattern |
+| Premature optimization | Complexity tanpa bukti | Profile first |
+
+### Cara Mendeteksi Anti-Patterns
+
+```
+Sebelum commit:
+1. Apakah ada code yang tidak related dengan task?
+2. Apakah ada duplicate logic yang sudah ada?
+3. Apakah violates existing patterns?
+4. Apakah perlu konfirmasi sebelum proceed?
+
+Jika ya untuk salah satu → Stop dan clarify
+```
+
+---
+
+## Priority System
+
+### Urutan Prioritas Rules
+
+```
+1. Existing Code Patterns
+   └── Selalu ikuti pattern yang sudah ada di codebase
+
+2. .docs/ Documentation
+   └── Jika ada dokumen terkait, itu adalah source of truth
+
+3. AGENTS.md Rules
+   └── Aturan umum di dokumen ini
+
+4. General Best Practices
+   └── Fallback jika tidak ada referensi spesifik
+```
+
+### Konflik Resolution
+
+```
+Jika terjadi konflik antar rules:
+
+Priority tinggi > Priority rendah
+
+Contoh:
+- Best practice bilang "use effect dependency array"
+- Tapi existing pattern di codebase tidak pakai
+- → Ikuti existing pattern (prioritas lebih tinggi)
+```
+
+---
+
+## Integrasi dengan `.docs/`
+
+### Hubungan AGENTS.md dan `.docs/`
+
+```
+AGENTS.md = Entry Point (ringkasan + rules utama)
+.docs/ = Deep Knowledge (dokumentasi detail per topik)
+
+Jika tugas match topik di .docs/:
+1. Cek .docs/ terlebih dahulu
+2. Apply rules dari .docs/
+3. AGENTS.md sebagai referensi umum
+
+Jika tugas tidak match .docs/ manapun:
+1. Gunakan rules dari AGENTS.md
+2. Apply best practices yang relevan
+```
+
+### Cross-Reference
+
+Untuk detail lengkap, lihat dokumen terkait di `.docs/`:
+
+- **UI & Styling** → `.docs/components-and-styling.md`
+- **State Management** → `.docs/state-management.md`
+- **API & Data Fetching** → `.docs/data-fetching.md`, `.docs/api-layer.md`
+- **Error Handling** → `.docs/error-handling.md`
+- **Testing** → `.docs/testing.md`
+- **Performance** → `.docs/performance.md`
+- **Arsitektur** → `.docs/information-architecture.md`, `.docs/project-structure.md`
+- **Standards** → `.docs/project-standards.md`
+
+---
+
 ## Project Overview
 
 **FilmGueh** is a movie tracking web application that helps users record, manage, and filter movies they have watched or want to watch. It uses the TMDB API for movie data and stores user data in browser LocalStorage (no backend, no authentication).
@@ -423,4 +697,95 @@ it('renders the form and submits', async () => {
 
 ---
 
-This architecture prioritizes developer experience, maintainability, and scalability while following React and JavaScript best practices. Reference the `.docs/` folder for detailed guides on specific topics.
+## Priority System
+
+### Urutan Prioritas Rules
+
+```
+1. Existing Code Patterns
+   └── Selalu ikuti pattern yang sudah ada di codebase
+
+2. .docs/ Documentation
+   └── Jika ada dokumen terkait, itu adalah source of truth
+
+3. AGENTS.md Rules
+   └── Aturan umum di dokumen ini
+
+4. General Best Practices
+   └── Fallback jika tidak ada referensi spesifik
+```
+
+### Konflik Resolution
+
+```
+Jika terjadi konflik antar rules:
+
+Priority tinggi > Priority rendah
+
+Contoh:
+- Best practice bilang "use effect dependency array"
+- Tapi existing pattern di codebase tidak pakai
+- → Ikuti existing pattern (prioritas lebih tinggi)
+```
+
+---
+
+## Integrasi dengan `.docs/`
+
+### Hubungan AGENTS.md dan `.docs/`
+
+```
+AGENTS.md = Entry Point (ringkasan + rules utama)
+.docs/ = Deep Knowledge (dokumentasi detail per topik)
+
+Jika tugas match topik di .docs/:
+1. Cek .docs/ terlebih dahulu
+2. Apply rules dari .docs/
+3. AGENTS.md sebagai referensi umum
+
+Jika tugas tidak match .docs/ manapun:
+1. Gunakan rules dari AGENTS.md
+2. Apply best practices yang relevan
+```
+
+### Cross-Reference
+
+Untuk detail lengkap, lihat dokumen terkait di `.docs/`:
+
+- **UI & Styling** → `.docs/components-and-styling.md`
+- **State Management** → `.docs/state-management.md`
+- **API & Data Fetching** → `.docs/data-fetching.md`, `.docs/api-layer.md`
+- **Error Handling** → `.docs/error-handling.md`
+- **Testing** → `.docs/testing.md`
+- **Performance** → `.docs/performance.md`
+- **Arsitektur** → `.docs/information-architecture.md`, `.docs/project-structure.md`
+- **Standards** → `.docs/project-standards.md`
+
+---
+
+## Common Patterns
+
+### Feature Development
+1. Start with API types and validation schemas (Zod)
+2. Create API/fetcher functions
+3. Create React Query hooks for TMDB data and LocalStorage operations
+4. Build Zustand stores for persistent UI state
+5. Build UI components with proper TypeScript integration
+6. Add tests covering the feature workflow
+
+### Component Creation
+1. Create a folder under the appropriate feature: `src/features/<feature>/components/<kebab-name>/`
+2. Use composition patterns over prop drilling
+3. Include integration tests for components with logic
+
+### LocalStorage Persistence
+1. Define types for the data model
+2. Create a Zustand store with `persist` middleware or plain read/write utilities
+3. Create React hooks that read/write to the store
+4. Components consume the hooks — never access LocalStorage directly
+
+### State Management (decision tree)
+1. Start with local component state
+2. Lift to parent component if needed by siblings
+3. Use Zustand if needed across features or for persisted data
+4. Use React Query for all TMDB API data

@@ -1,11 +1,11 @@
-import { FeatureCards } from '@/features/landing/components/feature-cards';
+import { FeaturesSection } from '@/features/landing/components/features-section';
 import { HeroSection } from '@/features/landing/components/hero-section';
 
 const HomePage = () => {
   return (
     <>
       <HeroSection />
-      <FeatureCards />
+      <FeaturesSection/>
     </>
   );
 };

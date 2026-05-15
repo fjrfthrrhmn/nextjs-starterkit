@@ -6,13 +6,13 @@
 
 ## 1. Writing Principles
 
-| Principle | Description |
-|---|---|
-| **Be concise** | Users scan, don't read. Cut every unnecessary word. |
-| **Be specific** | "No movies matching 'Inception'" not "No results found" |
-| **Show the way forward** | Every error/empty state needs a CTA or suggestion |
-| **No blame** | "Something went wrong" not "You broke it" |
-| **Consistent terminology** | "Collection" not "library" then "list". Pick one. |
+| Principle                  | Description                                             |
+| -------------------------- | ------------------------------------------------------- |
+| **Be concise**             | Users scan, don't read. Cut every unnecessary word.     |
+| **Be specific**            | "No movies matching 'Inception'" not "No results found" |
+| **Show the way forward**   | Every error/empty state needs a CTA or suggestion       |
+| **No blame**               | "Something went wrong" not "You broke it"               |
+| **Consistent terminology** | "Collection" not "library" then "list". Pick one.       |
 
 ---
 
@@ -20,26 +20,26 @@
 
 ### App Bar / Header
 
-| Context | EN | ID |
-|---|---|---|
-| App name | FilmGueh | FilmGueh |
-| Nav: collection | My Movies | Film Saya |
-| Nav: search | Search | Cari |
-| CTA: main | Get Started | Mulai |
+| Context         | EN          | ID        |
+| --------------- | ----------- | --------- |
+| App name        | FilmGueh    | FilmGueh  |
+| Nav: collection | My Movies   | Film Saya |
+| Nav: search     | Search      | Cari      |
+| CTA: main       | Get Started | Mulai     |
 
 ### Buttons
 
-| Context | EN | ID |
-|---|---|---|
-| Add movie | Add to Collection | Tambahkan |
-| Save changes | Save | Simpan |
-| Cancel | Cancel | Batal |
-| Delete entry | Remove | Hapus |
-| Confirm delete | Yes, Remove | Ya, Hapus |
-| Close modal | Close | Tutup |
-| Retry | Try Again | Coba Lagi |
-| Clear filters | Clear Filters | Hapus Filter |
-| Reset app data | Reset Data | Reset Data |
+| Context        | EN                | ID           |
+| -------------- | ----------------- | ------------ |
+| Add movie      | Add to Collection | Tambahkan    |
+| Save changes   | Save              | Simpan       |
+| Cancel         | Cancel            | Batal        |
+| Delete entry   | Remove            | Hapus        |
+| Confirm delete | Yes, Remove       | Ya, Hapus    |
+| Close modal    | Close             | Tutup        |
+| Retry          | Try Again         | Coba Lagi    |
+| Clear filters  | Clear Filters     | Hapus Filter |
+| Reset app data | Reset Data        | Reset Data   |
 
 ---
 
@@ -187,18 +187,18 @@ ID: "{title}" dihapus dari koleksi.
 
 ### Filter labels
 
-| Context | EN | ID |
-|---|---|---|
-| Category: all | All Categories | Semua Kategori |
-| Category: watched | Watched | Sudah Ditonton |
-| Category: plan | Plan to Watch | Akan Ditonton |
-| Category: dropped | Dropped | Berhenti |
-| Sort: title A-Z | Title A-Z | Judul A-Z |
-| Sort: title Z-A | Title Z-A | Judul Z-A |
-| Sort: rating high | Highest Rated | Rating Tertinggi |
-| Sort: rating low | Lowest Rated | Rating Terendah |
-| Sort: newest | Recently Added | Terbaru |
-| Sort: oldest | Oldest First | Terlama |
+| Context           | EN             | ID               |
+| ----------------- | -------------- | ---------------- |
+| Category: all     | All Categories | Semua Kategori   |
+| Category: watched | Watched        | Sudah Ditonton   |
+| Category: plan    | Plan to Watch  | Akan Ditonton    |
+| Category: dropped | Dropped        | Berhenti         |
+| Sort: title A-Z   | Title A-Z      | Judul A-Z        |
+| Sort: title Z-A   | Title Z-A      | Judul Z-A        |
+| Sort: rating high | Highest Rated  | Rating Tertinggi |
+| Sort: rating low  | Lowest Rated   | Rating Terendah  |
+| Sort: newest      | Recently Added | Terbaru          |
+| Sort: oldest      | Oldest First   | Terlama          |
 
 ### Filter state indicators
 
@@ -245,14 +245,14 @@ ID: Anda sedang offline. Koleksi Anda masih bisa diakses.
 
 ## 8. Rating Copy
 
-| Value | Label |
-|---|---|
+| Value     | Label           |
+| --------- | --------------- |
 | Not rated | Rate this movie |
-| 1 | Terrible |
-| 2 | Bad |
-| 3 | Okay |
-| 4 | Good |
-| 5 | Excellent |
+| 1         | Terrible        |
+| 2         | Bad             |
+| 3         | Okay            |
+| 4         | Good            |
+| 5         | Excellent       |
 
 ```
 EN: Your rating: {value}/5
@@ -263,14 +263,14 @@ ID: Rating Anda: {value}/5
 
 ## 9. Empty States — Quick Reference
 
-| Context | EN | ID |
-|---|---|---|
-| Empty collection | Your collection is empty. Search movies to add. | Koleksi masih kosong. Cari film untuk ditambahkan. |
-| Filter empty | No movies match this filter. | Tidak ada film yang cocok. |
-| Search collection empty | No movies matching "{q}" in your collection. | Tidak ada film "{q}" di koleksi. |
-| Search API empty | No movies found for "{q}". | Tidak ada film untuk "{q}". |
-| API error | Could not search right now. Try again. | Gagal mencari. Coba lagi. |
-| Offline | You're offline. Collection is accessible. | Anda offline. Koleksi masih bisa diakses. |
+| Context                 | EN                                              | ID                                                 |
+| ----------------------- | ----------------------------------------------- | -------------------------------------------------- |
+| Empty collection        | Your collection is empty. Search movies to add. | Koleksi masih kosong. Cari film untuk ditambahkan. |
+| Filter empty            | No movies match this filter.                    | Tidak ada film yang cocok.                         |
+| Search collection empty | No movies matching "{q}" in your collection.    | Tidak ada film "{q}" di koleksi.                   |
+| Search API empty        | No movies found for "{q}".                      | Tidak ada film untuk "{q}".                        |
+| API error               | Could not search right now. Try again.          | Gagal mencari. Coba lagi.                          |
+| Offline                 | You're offline. Collection is accessible.       | Anda offline. Koleksi masih bisa diakses.          |
 
 ---
 

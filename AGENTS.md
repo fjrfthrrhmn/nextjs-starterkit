@@ -10,16 +10,16 @@ Sebelum menyelesaikan tugas, AI **WAJIB** menganalisis dan memilih skill yang pa
 
 ### Skill yang Tersedia
 
-| Skill | Gunakan ketika... |
-|-------|-------------------|
-| `next-best-practices` | Task Next.js routing, RSC, metadata, error handling |
-| `shadcn-ui` | Task komponen UI, forms, dialog, atau styling pattern |
-| `tailwind-design-system` | Task design tokens, component library, atau responsive patterns |
-| `typescript-advanced-types` | Task generics, conditional types, atau type-safe utilities |
-| `zod-validation-expert` | Task schema validation, form handling, atau API validation |
-| `frontend-design` | Task涉及 membuat UI lengkap, landing page, atau design system |
-| `context7-mcp` | Butuh dokumentasi/library terkini untuk framework/library spesifik |
-| `writing-plans` | Task kompleks multi-step yang butuh rencana sebelum eksekusi |
+| Skill                       | Gunakan ketika...                                                  |
+| --------------------------- | ------------------------------------------------------------------ |
+| `next-best-practices`       | Task Next.js routing, RSC, metadata, error handling                |
+| `shadcn-ui`                 | Task komponen UI, forms, dialog, atau styling pattern              |
+| `tailwind-design-system`    | Task design tokens, component library, atau responsive patterns    |
+| `typescript-advanced-types` | Task generics, conditional types, atau type-safe utilities         |
+| `zod-validation-expert`     | Task schema validation, form handling, atau API validation         |
+| `frontend-design`           | Task涉及 membuat UI lengkap, landing page, atau design system      |
+| `context7-mcp`              | Butuh dokumentasi/library terkini untuk framework/library spesifik |
+| `writing-plans`             | Task kompleks multi-step yang butuh rencana sebelum eksekusi       |
 
 ### Proses Seleksi Skill
 
@@ -60,23 +60,23 @@ Eksekusi Task
 
 ### Dokumen `.docs/` yang Tersedia
 
-| Dokumen | Topik |
-|---------|-------|
-| `product-definition.md` | Definisi produk |
-| `information-architecture.md` | Arsitektur informasi |
-| `project-structure.md` | Struktur proyek |
-| `project-standards.md` | Standar proyek |
-| `components-and-styling.md` | Komponen UI & styling |
-| `state-management.md` | Strategi state management |
-| `data-fetching.md` | Layer API & data fetching |
-| `api-layer.md` | Detail API layer |
-| `error-handling.md` | Strategi error handling |
-| `performance.md` | Optimasi performa |
-| `testing.md` | Strategi testing |
-| `security.md` | Keamanan aplikasi |
-| `deployment.md` | Build & deployment |
-| `ux-writing.md` | Guidelines UX writing |
-| `design.md` | Design system |
+| Dokumen                       | Topik                     |
+| ----------------------------- | ------------------------- |
+| `product-definition.md`       | Definisi produk           |
+| `information-architecture.md` | Arsitektur informasi      |
+| `project-structure.md`        | Struktur proyek           |
+| `project-standards.md`        | Standar proyek            |
+| `components-and-styling.md`   | Komponen UI & styling     |
+| `state-management.md`         | Strategi state management |
+| `data-fetching.md`            | Layer API & data fetching |
+| `api-layer.md`                | Detail API layer          |
+| `error-handling.md`           | Strategi error handling   |
+| `performance.md`              | Optimasi performa         |
+| `testing.md`                  | Strategi testing          |
+| `security.md`                 | Keamanan aplikasi         |
+| `deployment.md`               | Build & deployment        |
+| `ux-writing.md`               | Guidelines UX writing     |
+| `design.md`                   | Design system             |
 
 ### Aturan Prioritas Dokumen
 
@@ -92,26 +92,31 @@ Eksekusi Task
 AI mengikuti langkah-langkah ini untuk setiap task:
 
 ### 1. Pahami Masalah
+
 - Baca ulang request pengguna
 - Identifikasi requirement eksplisit dan implisit
 - Clarify jika ada ambiguitas
 
 ### 2. Identifikasi Asumsi Tersembunyi
+
 - Apa yang diasumsikan tentang state saat ini?
 - Apa batasan teknis atau arsitektur?
 - Apa yang tidak boleh diubah?
 
 ### 3. Evaluasi Alternatif
+
 - Apakah ada trade-off yang perlu dipertimbangkan?
 - Apa implikasi jangka pendek vs jangka panjang?
 - Apakah ada solusi yang lebih sederhana?
 
 ### 4. Selaraskan dengan Arsitektur
+
 - Apakah sesuai dengan existing patterns?
 - Apakah melanggar unidirectional flow?
 - Apakah perlu konfirmasi sebelum melanjutkan?
 
 ### 5. Produksi Solusi
+
 - Implementasi sesuai best practices
 - Dokumentasi perubahan jika perlu
 - Verifikasi dengan lint/typecheck/tests
@@ -150,13 +155,13 @@ Sebelum melanjutkan, AI HARUS mengonfirmasi jika:
 
 ### Prinsip Komunikasi
 
-| ситуация | Respons |
-|----------|---------|
-| Task sederhana | Langsung eksekusi, minimal output |
-| Task kompleks | Jelaskan approach, lalu eksekusi |
-| Decision dengan trade-off | Nyatakan options + rekomendasi |
-| Clarification needed | Ajukan pertanyaan spesifik |
-| Error/kegagalan | Nyatakan masalah + proposed fix |
+| ситуация                  | Respons                           |
+| ------------------------- | --------------------------------- |
+| Task sederhana            | Langsung eksekusi, minimal output |
+| Task kompleks             | Jelaskan approach, lalu eksekusi  |
+| Decision dengan trade-off | Nyatakan options + rekomendasi    |
+| Clarification needed      | Ajukan pertanyaan spesifik        |
+| Error/kegagalan           | Nyatakan masalah + proposed fix   |
 
 ### Standar Output
 
@@ -169,11 +174,13 @@ Sebelum melanjutkan, AI HARUS mengonfirmasi jika:
 
 ```markdown
 # ❌ Buruk
+
 "Berikut adalah implementasi dari fitur yang Anda minta. Saya membuat komponen baru
 yang terdiri dari beberapa file karena saya pikir itu perlu untuk skalabilitas.
 Semoga bermanfaat!"
 
 # ✅ Baik
+
 [tidak ada intro]
 [membuat file dengan pattern yang ada]
 [tidak ada outro]
@@ -185,14 +192,14 @@ Semoga bermanfaat!"
 
 ### Tanda-Tanda AI Bermasalah
 
-| Pattern | Masalah | Solusi |
-|---------|---------|--------|
-| Overengineering | Kompleksitas tidak perlu | KISS principle |
-| Duplicate code | Abstraksi tidak perlu | Shared utilities |
-| Cross-feature import | Violasi arsitektur | Perbaiki boundary |
-| Magic numbers/strings | Hardcoded values | Konstanta terpusat |
-| Prop drilling | Tight coupling | Composition pattern |
-| Premature optimization | Complexity tanpa bukti | Profile first |
+| Pattern                | Masalah                  | Solusi              |
+| ---------------------- | ------------------------ | ------------------- |
+| Overengineering        | Kompleksitas tidak perlu | KISS principle      |
+| Duplicate code         | Abstraksi tidak perlu    | Shared utilities    |
+| Cross-feature import   | Violasi arsitektur       | Perbaiki boundary   |
+| Magic numbers/strings  | Hardcoded values         | Konstanta terpusat  |
+| Prop drilling          | Tight coupling           | Composition pattern |
+| Premature optimization | Complexity tanpa bukti   | Profile first       |
 
 ### Cara Mendeteksi Anti-Patterns
 
@@ -344,15 +351,6 @@ src/
 ├── features/         # Feature-based modules
 │   └── landing/      # Landing page feature
 │       └── components/
-│           ├── feature-cards.tsx   # Bento grid feature cards
-│           ├── hero-section.tsx    # Hero section
-│           ├── hero-search/        # Command palette search component
-│           │   ├── components/     # UI sub-components (SearchInput, TagFilter, MovieItem, etc.)
-│           │   ├── hooks/          # Custom hooks (useHeroSearch)
-│           │   ├── types.ts        # Feature-specific types & constants
-│           │   ├── index.ts        # Barrel exports
-│           └── __tests__/
-│               └── home-page.test.tsx
 ├── hooks/            # Shared React hooks
 │   ├── use-disclosure.ts  # Open/close toggle hook
 │   ├── use-keyboard-shortcut.ts  # Keyboard shortcut listener
@@ -389,12 +387,14 @@ src/features/movies/
 ## Code Standards
 
 ### TypeScript
+
 - **Strict mode enabled** — all strict checks are enforced
 - **Type-first approach** — define types before implementation
 - **Absolute imports** — use `@/` prefix for all src imports (e.g., `@/components/ui/button`)
 - **No `any`** — avoid unless absolutely necessary; prefer `unknown` + type guards
 
 ### Code Style (enforced by ESLint + Prettier)
+
 - **Kebab-case** for file and folder names (e.g., `movie-card.tsx`)
 - **PascalCase** for React components (e.g., `MovieCard`)
 - **camelCase** for functions and variables (e.g., `fetchMovies`, `isLoading`)
@@ -405,6 +405,7 @@ src/features/movies/
 - **Alphabetized imports** with newlines between groups
 
 ### Architecture Rules
+
 - **No cross-feature imports** — features should not import from each other
 - **Unidirectional flow** — `utils/ → lib/ → components/ → features/ → app/`
 - **Colocation** — keep related code as close as possible to where it's used
@@ -413,11 +414,13 @@ src/features/movies/
 ## Component Guidelines
 
 ### Best Practices
+
 - **Composition over props** — use `children`/slots instead of many props
 - **Extract render functions** — move complex JSX into separate components
 - **Limit prop count** — if a component accepts too many props, split it or use composition
 
 ### Styling
+
 - **Tailwind CSS** is the primary styling solution
 - **ShadCN/UI pattern** — components are copied into codebase, not installed as packages
 - **CSS variables** in `globals.css` for theme tokens (colors, border-radius, etc.)
@@ -425,18 +428,25 @@ src/features/movies/
 ### Available UI Components
 
 #### From barrel (RECOMMENDED)
+
 ```tsx
-import { Button, Typography, Kbd, Form, Input } from '@/components/ui';
+import { Button, Form, Input, Kbd, Typography } from '@/components/ui';
 ```
 
 #### Button
+
 ```tsx
-<Button variant="default|outline|destructive|secondary|ghost|link" size="default|sm|lg|icon" icon={<LucideIcon />}>
-  Click me
+<Button
+	variant="default|outline|destructive|secondary|ghost|link"
+	size="default|sm|lg|icon"
+	icon={<LucideIcon />}
+>
+	Click me
 </Button>
 ```
 
 #### Form
+
 ```tsx
 <Form submitHandler={handleSubmit} schema={validationSchema}>
   <Input label="Title" name="title" placeholder="Movie title" />
@@ -449,18 +459,23 @@ import { Button, Typography, Kbd, Form, Input } from '@/components/ui';
 ### Central Config (`@/config/`)
 
 #### site.ts — Static Data Hub
+
 All static data lives in `src/config/site.ts`:
+
 - `siteConfig` — name, description, tagline, URL, author
 - `navLinks` — navigation link definitions
 - `features` — feature card data for landing page
 
 Import anywhere without duplication:
+
 ```tsx
-import { siteConfig, navLinks, features } from '@/config/site';
+import { features, navLinks, siteConfig } from '@/config/site';
 ```
 
 #### icons.tsx — Central SVG Icon Components
+
 Custom SVG icons as named React components with a dynamic `Icon` wrapper:
+
 ```tsx
 import { Icon, SearchIcon, iconMap } from '@/config/icons';
 
@@ -472,34 +487,42 @@ import { Icon, SearchIcon, iconMap } from '@/config/icons';
 ```
 
 ### Centralized Icon System (`@/constants/icons/`)
+
 All Lucide React icons are mapped centrally — never import from `lucide-react` directly in components.
 
 ```tsx
 import { getIcon } from '@/constants';
 
 // Usage
-{getIcon('search', 'size-4 text-muted-foreground')}
-{getIcon('star', 'size-3 text-yellow-500')}
+{
+	getIcon('search', 'size-4 text-muted-foreground');
+}
+{
+	getIcon('star', 'size-3 text-yellow-500');
+}
 ```
 
 Icon map definition (`src/constants/icons/icons.tsx`):
+
 ```tsx
 export const ICON_MAP: Record<IconKey, IconConfig> = {
-  search: { icon: Search, label: 'Search' },
-  star: { icon: Star, label: 'Rating' },
-  all: { icon: Clapperboard, label: 'Semua' },
-  // ... more icons
+	search: { icon: Search, label: 'Search' },
+	star: { icon: Star, label: 'Rating' },
+	all: { icon: Clapperboard, label: 'Semua' }
+	// ... more icons
 };
 ```
 
 ### Centralized Data Layer (`@/data/`)
+
 All dummy data and domain models are centralized and exported via barrel file:
 
 ```tsx
-import { Movie, movies, categories, getMoviesByCategory, searchMovies } from '@/data';
+import { categories, getMoviesByCategory, Movie, movies, searchMovies } from '@/data';
 ```
 
 Structure:
+
 - `categories.ts` — Category constants and type
 - `movies.ts` — Movie model, data array, and utility functions (getMoviesByCategory, searchMovies)
 - `index.ts` — Barrel exports
@@ -507,29 +530,35 @@ Structure:
 ## State Management Strategy
 
 ### Component State
+
 - `useState` for simple independent state
 - `useDisclosure` hook (`@/hooks/use-disclosure`) for open/close UI state (modals, drawers)
 
 ### Application State
+
 - **Zustand** for global client state (modals, filters, theme)
 - Keep state as close to usage as possible — avoid premature globalization
 
 ### Server/External State
+
 - **TanStack Query** for TMDB API data fetching with caching
 - Separate fetcher functions from hooks
 
 ### Form State
+
 - **React Hook Form** for form management
 - **Zod** for validation schemas
 - Use the `Form` component abstraction
 
 ### Persistent State
+
 - **LocalStorage** for movie tracker data (no backend)
 - Read/write via utility functions or a Zustand store with persist middleware
 
 ## API Layer
 
 ### Structure
+
 Each API endpoint should follow a consistent pattern:
 
 1. **Types & validation schemas** for request/response data
@@ -537,33 +566,36 @@ Each API endpoint should follow a consistent pattern:
 3. **React Query hook** for data fetching/caching
 
 ### Example Pattern
+
 ```typescript
 // features/movies/api/search-movies.ts
-import { z } from 'zod';
 import { useQuery } from '@tanstack/react-query';
+import { z } from 'zod';
+
 import { api } from '@/lib/api-client';
 
 export const searchMoviesInputSchema = z.object({
-  query: z.string().min(1),
-  page: z.number().optional(),
+	query: z.string().min(1),
+	page: z.number().optional()
 });
 
 export type SearchMoviesInput = z.infer<typeof searchMoviesInputSchema>;
 
 export const searchMovies = ({ query, page = 1 }: SearchMoviesInput): Promise<Movie[]> => {
-  return api.get('/search/movie', { params: { query, page } });
+	return api.get('/search/movie', { params: { query, page } });
 };
 
 export const useSearchMovies = (input: SearchMoviesInput) => {
-  return useQuery({
-    queryKey: ['movies', 'search', input],
-    queryFn: () => searchMovies(input),
-    enabled: input.query.length > 0,
-  });
+	return useQuery({
+		queryKey: ['movies', 'search', input],
+		queryFn: () => searchMovies(input),
+		enabled: input.query.length > 0
+	});
 };
 ```
 
 ### API Client (`@/lib/api-client`)
+
 - Pre-configured fetch-based client with:
   - Base URL from `NEXT_PUBLIC_API_URL`
   - Cookie forwarding for SSR
@@ -575,14 +607,17 @@ export const useSearchMovies = (input: SearchMoviesInput) => {
 ## Testing Strategy
 
 ### Testing Pyramid
+
 1. **Integration Tests** (primary focus) — test feature workflows
 2. **Unit Tests** — test shared utilities and complex logic
 
 ### Tools
+
 - **Vitest** — test runner (globals enabled: `vi`, `describe`, `it`, `expect`)
 - **Testing Library** — `@testing-library/react`, `@testing-library/user-event`, `@testing-library/jest-dom`
 
 ### Patterns
+
 - Test behavior, not implementation details
 - Use `renderApp` utility for wrapped component rendering
 - Mock `next/navigation` via the global setup in `setup-tests.ts`
@@ -592,21 +627,23 @@ export const useSearchMovies = (input: SearchMoviesInput) => {
 import { renderApp, screen, userEvent } from '@/testing/test-utils';
 
 it('renders the form and submits', async () => {
-  const { user } = renderApp(<MyForm />);
-  await user.type(screen.getByLabelText('Title'), 'Inception');
-  await user.click(screen.getByRole('button', { name: /save/i }));
-  expect(screen.getByText(/success/i)).toBeInTheDocument();
+	const { user } = renderApp(<MyForm />);
+	await user.type(screen.getByLabelText('Title'), 'Inception');
+	await user.click(screen.getByRole('button', { name: /save/i }));
+	expect(screen.getByText(/success/i)).toBeInTheDocument();
 });
 ```
 
 ## Performance Optimization
 
 ### React Optimizations
+
 - **Children prop pattern** — prevent unnecessary re-renders
 - **State colocation** — keep state close to where it's used
 - **State initializer functions** — for expensive initial computations (`useState(() => expensive())`)
 
 ### Image Optimization
+
 - Use Next.js `Image` component with TMDB image URLs
 - Lazy loading for images outside viewport
 - Configure remote patterns in `next.config.mjs`
@@ -614,9 +651,11 @@ it('renders the form and submits', async () => {
 ## Error Handling
 
 ### API Errors
+
 - Global error handling in `api-client.ts` — throws `Error` with server message
 
 ### Application Errors
+
 - **Error Boundaries** at feature level (not just app level)
 - `MainErrorFallback` component for top-level errors
 - Graceful fallbacks for broken components
@@ -624,12 +663,14 @@ it('renders the form and submits', async () => {
 ## Build and Deployment
 
 ### Development
+
 - **Next.js 14** with App Router
 - **TypeScript strict mode** for compile-time safety
 - **ESLint + Prettier** for code quality
 - **HMR** via Next.js dev server
 
 ### Production
+
 - Static site generation (SSG) where possible
 - Deploy to **Vercel**, **Netlify**, or **Cloudflare Pages**
 - Environment variables via `.env` files
@@ -637,11 +678,13 @@ it('renders the form and submits', async () => {
 ## Key Libraries
 
 ### Core
+
 - **Next.js 14** (App Router)
 - **React 18**
 - **TypeScript** (strict mode)
 
 ### UI & Styling
+
 - **Tailwind CSS** — utility-first styling
 - **Radix UI** — `@radix-ui/react-label`, `@radix-ui/react-slot`, `@radix-ui/react-switch`
 - **Lucide React** — icons (consumed via centralized `@/constants/icons/`)
@@ -649,6 +692,7 @@ it('renders the form and submits', async () => {
 - **motion/react** — animations for command palette and UI transitions
 
 ### Data & State
+
 - **TanStack Query** — server state (TMDB API)
 - **Zustand** — client state (filters, UI state)
 - **React Hook Form + Zod** — forms
@@ -656,6 +700,7 @@ it('renders the form and submits', async () => {
 - **dayjs** — date formatting
 
 ### Testing
+
 - **Vitest** — test runner
 - **Testing Library** — component testing
 
@@ -671,6 +716,7 @@ it('renders the form and submits', async () => {
 ## Common Patterns
 
 ### Feature Development
+
 1. Start with API types and validation schemas (Zod)
 2. Create API/fetcher functions
 3. Create React Query hooks for TMDB data and LocalStorage operations
@@ -679,17 +725,20 @@ it('renders the form and submits', async () => {
 6. Add tests covering the feature workflow
 
 ### Component Creation
+
 1. Create a folder under the appropriate feature: `src/features/<feature>/components/<kebab-name>/`
 2. Use composition patterns over prop drilling
 3. Include integration tests for components with logic
 
 ### LocalStorage Persistence
+
 1. Define types for the data model
 2. Create a Zustand store with `persist` middleware or plain read/write utilities
 3. Create React hooks that read/write to the store
 4. Components consume the hooks — never access LocalStorage directly
 
 ### State Management (decision tree)
+
 1. Start with local component state
 2. Lift to parent component if needed by siblings
 3. Use Zustand if needed across features or for persisted data
@@ -766,6 +815,7 @@ Untuk detail lengkap, lihat dokumen terkait di `.docs/`:
 ## Common Patterns
 
 ### Feature Development
+
 1. Start with API types and validation schemas (Zod)
 2. Create API/fetcher functions
 3. Create React Query hooks for TMDB data and LocalStorage operations
@@ -774,17 +824,20 @@ Untuk detail lengkap, lihat dokumen terkait di `.docs/`:
 6. Add tests covering the feature workflow
 
 ### Component Creation
+
 1. Create a folder under the appropriate feature: `src/features/<feature>/components/<kebab-name>/`
 2. Use composition patterns over prop drilling
 3. Include integration tests for components with logic
 
 ### LocalStorage Persistence
+
 1. Define types for the data model
 2. Create a Zustand store with `persist` middleware or plain read/write utilities
 3. Create React hooks that read/write to the store
 4. Components consume the hooks — never access LocalStorage directly
 
 ### State Management (decision tree)
+
 1. Start with local component state
 2. Lift to parent component if needed by siblings
 3. Use Zustand if needed across features or for persisted data

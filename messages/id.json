@@ -1,127 +1,146 @@
 {
-  "common": {
-    "appName": "FilmGueh"
-  },
-  "hero": {
-    "title": "Cari & Simpan Film Favoritmu",
-    "subtitle": "Temukan ribuan film, simpan ke koleksi pribadi, dan lacak tontonanmu."
-  },
-  "features": {
-    "title": "Semua yang Kamu Butuhkan",
-    "subtitle": "Semua tools untuk mengelola, melacak, dan menikmati koleksi filmmu.",
-    "database": {
-      "title": "Database Lengkap",
-      "description": "Akses ke jutaan film dari TMDB dan OMDb. Cari berdasarkan judul, lihat sinopsis, poster, genre, dan rating."
-    },
-    "collection": {
-      "title": "Koleksi Pribadi",
-      "description": "Simpan film ke koleksi pribadi. Tandai sebagai Sudah Ditonton, Akan Ditonton, atau Berhenti."
-    },
-    "stats": {
-      "title": "Statistik Menarik",
-      "description": "Lihat ringkasan koleksi: total film, per kategori, genre favorit, dan rating tertinggi."
-    },
-    "more": {
-      "title": "Lainnya",
-      "description": "Rating 1-5, catatan pribadi, filter dan sorting, pencarian di koleksi, dan masih banyak lagi."
-    }
-  },
-  "nav": {
-    "home": "Beranda",
-    "movies": "Film Saya",
-    "search": "Cari",
-    "about": "Tentang"
-  },
-  "cta": {
-    "getStarted": "Mulai Sekarang",
-    "addToCollection": "Tambahkan",
-    "save": "Simpan",
-    "cancel": "Batal",
-    "remove": "Hapus",
-    "confirmRemove": "Ya, Hapus",
-    "close": "Tutup",
-    "tryAgain": "Coba Lagi",
-    "clearFilters": "Hapus Filter",
-    "resetData": "Reset Data"
-  },
-  "search": {
-    "initial": "Cari film untuk ditambahkan ke koleksi. Mulai ketik di atas.",
-    "loading": "Mencari \"{query}\"...",
-    "results": "{count} hasil untuk \"{query}\"",
-    "noResults": "Tidak ada film untuk \"{query}\". Periksa ejaan atau coba judul lain.",
-    "error": "Gagal mencari saat ini. Silakan coba lagi.",
-    "duplicate": "Sudah di koleksi"
-  },
-  "collection": {
-    "empty": "Koleksi Anda masih kosong. Cari film dan mulai buat daftar tontonan Anda.",
-    "noMatch": "Tidak ada film yang cocok dengan \"{filter}\". Coba kategori atau genre lain.",
-    "noSearchMatch": "Tidak ada film \"{query}\" di koleksi Anda.",
-    "corrupt": "Terjadi kesalahan saat memuat koleksi. Anda bisa reset data dan mulai dari awal."
-  },
-  "tracker": {
-    "added": "\"{title}\" ditambahkan ke koleksi.",
-    "alreadyExists": "\"{title}\" sudah ada di koleksi Anda.",
-    "chooseCategory": "Tambahkan ke...",
-    "category": {
-      "watched": "Sudah Ditonton",
-      "planToWatch": "Akan Ditonton",
-      "dropped": "Berhenti"
-    },
-    "changesSaved": "Perubahan tersimpan.",
-    "confirmDelete": "Hapus \"{title}\" dari koleksi? Tindakan ini tidak bisa dibatalkan.",
-    "removed": "\"{title}\" dihapus dari koleksi."
-  },
-  "filter": {
-    "allCategories": "Semua Kategori",
-    "watched": "Sudah Ditonton",
-    "planToWatch": "Akan Ditonton",
-    "dropped": "Berhenti",
-    "sort": {
-      "titleAsc": "Judul A-Z",
-      "titleDesc": "Judul Z-A",
-      "ratingHigh": "Rating Tertinggi",
-      "ratingLow": "Rating Terendah",
-      "newest": "Terbaru",
-      "oldest": "Terlama"
-    },
-    "clearAll": "Hapus semua filter",
-    "stats": "{total} film · {watched} ditonton · {plan} akan ditonton · {dropped} berhenti"
-  },
-  "errors": {
-    "apiUnavailable": "Tidak bisa mencari saat ini — TMDB tidak tersedia. Periksa koneksi Anda dan coba lagi.",
-    "fallbackSource": "Menggunakan sumber alternatif. Hasil mungkin berbeda.",
-    "offline": "Anda sedang offline. Koleksi Anda masih bisa diakses."
-  },
-  "rating": {
-    "notRated": "Beri rating film ini",
-    "rateThis": "Rating Anda: {value}/5",
-    "labels": {
-      "1": "Buruk",
-      "2": "Tidak bagus",
-      "3": "Biasa",
-      "4": "Bagus",
-      "5": "Luar biasa"
-    }
-  },
-  "footer": {
-    "tagline": "Lacak setiap film yang kamu tonton.",
-    "poweredBy": "Data oleh",
-    "discover": "Jelajahi",
-    "about": "Tentang",
-    "version": "v1.0.0",
-    "buyMeCoffee": "Beli kopi",
-    "followUs": "Ikuti kami",
-    "copyright": "Hak cipta dilindungi."
-  },
-  "header": {
-    "switchLanguage": "Ganti ke Bahasa Inggris",
-    "toggleTheme": "Ganti Tema",
-    "switchToEn": "Switch to English",
-    "switchToId": "Ganti ke Bahasa Indonesia"
-  },
-  "notFound": {
-    "title": "404",
-    "message": "Maaf, halaman yang kamu cari tidak ditemukan.",
-    "backHome": "Kembali ke Beranda"
-  }
+	"common": {
+		"appName": "FilmGueh"
+	},
+	"hero": {
+		"title": "Cari & Simpan Film Favoritmu",
+		"subtitle": "Temukan ribuan film, simpan ke koleksi pribadi, dan lacak tontonanmu."
+	},
+	"features": {
+		"title": "Semua yang Kamu Butuhkan",
+		"subtitle": "Semua tools untuk mengelola, melacak, dan menikmati koleksi filmmu.",
+		"database": {
+			"title": "Database Lengkap",
+			"description": "Akses ke jutaan film dari TMDB dan OMDb. Cari berdasarkan judul, lihat sinopsis, poster, genre, dan rating."
+		},
+		"collection": {
+			"title": "Koleksi Pribadi",
+			"description": "Simpan film ke koleksi pribadi. Tandai sebagai Sudah Ditonton, Akan Ditonton, atau Berhenti."
+		},
+		"stats": {
+			"title": "Statistik Menarik",
+			"description": "Lihat ringkasan koleksi: total film, per kategori, genre favorit, dan rating tertinggi."
+		},
+		"more": {
+			"title": "Lainnya",
+			"description": "Rating 1-5, catatan pribadi, filter dan sorting, pencarian di koleksi, dan masih banyak lagi."
+		}
+	},
+	"nav": {
+		"home": "Beranda",
+		"movies": "Film Saya",
+		"search": "Cari",
+		"about": "Tentang"
+	},
+	"cta": {
+		"getStarted": "Mulai Sekarang",
+		"addToCollection": "Tambahkan",
+		"save": "Simpan",
+		"cancel": "Batal",
+		"remove": "Hapus",
+		"confirmRemove": "Ya, Hapus",
+		"close": "Tutup",
+		"tryAgain": "Coba Lagi",
+		"clearFilters": "Hapus Filter",
+		"resetData": "Reset Data"
+	},
+	"search": {
+		"initial": "Cari film untuk ditambahkan ke koleksi. Mulai ketik di atas.",
+		"loading": "Mencari \"{query}\"...",
+		"results": "{count} hasil untuk \"{query}\"",
+		"noResults": "Tidak ada film untuk \"{query}\". Periksa ejaan atau coba judul lain.",
+		"error": "Gagal mencari saat ini. Silakan coba lagi.",
+		"duplicate": "Sudah di koleksi",
+		"clear": "Hapus pencarian",
+		"navigate": "navigasi",
+		"select": "pilih",
+		"close": "tutup",
+		"movies_found": "film ditemukan",
+		"findMovies": "Cari film untuk ditambahkan ke koleksi.",
+		"startTyping": "Mulai ketik di atas.",
+		"noResultsFor": "Tidak ada film untuk \"{query}\".",
+		"checkSpelling": "Periksa ejaan atau coba judul lain.",
+		"noInCategory": "Tidak ada film di \"{category}\".",
+		"tryDifferentCategory": "Coba kategori lain.",
+		"tags": {
+			"all": "Semua",
+			"action": "Action",
+			"comedy": "Komedi",
+			"horror": "Horror",
+			"thriller": "Thriller",
+			"animation": "Animasi"
+		}
+	},
+	"collection": {
+		"empty": "Koleksi Anda masih kosong. Cari film dan mulai buat daftar tontonan Anda.",
+		"noMatch": "Tidak ada film yang cocok dengan \"{filter}\". Coba kategori atau genre lain.",
+		"noSearchMatch": "Tidak ada film \"{query}\" di koleksi Anda.",
+		"corrupt": "Terjadi kesalahan saat memuat koleksi. Anda bisa reset data dan mulai dari awal."
+	},
+	"tracker": {
+		"added": "\"{title}\" ditambahkan ke koleksi.",
+		"alreadyExists": "\"{title}\" sudah ada di koleksi Anda.",
+		"chooseCategory": "Tambahkan ke...",
+		"category": {
+			"watched": "Sudah Ditonton",
+			"planToWatch": "Akan Ditonton",
+			"dropped": "Berhenti"
+		},
+		"changesSaved": "Perubahan tersimpan.",
+		"confirmDelete": "Hapus \"{title}\" dari koleksi? Tindakan ini tidak bisa dibatalkan.",
+		"removed": "\"{title}\" dihapus dari koleksi."
+	},
+	"filter": {
+		"allCategories": "Semua Kategori",
+		"watched": "Sudah Ditonton",
+		"planToWatch": "Akan Ditonton",
+		"dropped": "Berhenti",
+		"sort": {
+			"titleAsc": "Judul A-Z",
+			"titleDesc": "Judul Z-A",
+			"ratingHigh": "Rating Tertinggi",
+			"ratingLow": "Rating Terendah",
+			"newest": "Terbaru",
+			"oldest": "Terlama"
+		},
+		"clearAll": "Hapus semua filter",
+		"stats": "{total} film · {watched} ditonton · {plan} akan ditonton · {dropped} berhenti"
+	},
+	"errors": {
+		"apiUnavailable": "Tidak bisa mencari saat ini — TMDB tidak tersedia. Periksa koneksi Anda dan coba lagi.",
+		"fallbackSource": "Menggunakan sumber alternatif. Hasil mungkin berbeda.",
+		"offline": "Anda sedang offline. Koleksi Anda masih bisa diakses."
+	},
+	"rating": {
+		"notRated": "Beri rating film ini",
+		"rateThis": "Rating Anda: {value}/5",
+		"labels": {
+			"1": "Buruk",
+			"2": "Tidak bagus",
+			"3": "Biasa",
+			"4": "Bagus",
+			"5": "Luar biasa"
+		}
+	},
+	"footer": {
+		"tagline": "Lacak setiap film yang kamu tonton.",
+		"poweredBy": "Data oleh",
+		"discover": "Jelajahi",
+		"about": "Tentang",
+		"version": "v1.0.0",
+		"buyMeCoffee": "Beli kopi",
+		"followUs": "Ikuti kami",
+		"copyright": "Hak cipta dilindungi."
+	},
+	"header": {
+		"switchLanguage": "Ganti ke Bahasa Inggris",
+		"toggleTheme": "Ganti Tema",
+		"switchToEn": "Switch to English",
+		"switchToId": "Ganti ke Bahasa Indonesia"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Maaf, halaman yang kamu cari tidak ditemukan.",
+		"backHome": "Kembali ke Beranda"
+	}
 }

@@ -37,16 +37,16 @@
 
 ```typescript
 export const paths = {
-  home: { getHref: () => '/' },
-  movies: {
-    getHref: (params?: Record<string, string>) => {
-      const qs = params ? '?' + new URLSearchParams(params).toString() : '';
-      return `/movies${qs}`;
-    },
-  },
-  search: {
-    getHref: (query: string) => `/search?q=${encodeURIComponent(query)}`,
-  },
+	home: { getHref: () => '/' },
+	movies: {
+		getHref: (params?: Record<string, string>) => {
+			const qs = params ? '?' + new URLSearchParams(params).toString() : '';
+			return `/movies${qs}`;
+		}
+	},
+	search: {
+		getHref: (query: string) => `/search?q=${encodeURIComponent(query)}`
+	}
 } as const;
 ```
 
@@ -188,16 +188,16 @@ AppProvider
 
 ```typescript
 interface MovieStore {
-  entries: MovieEntry[];
+	entries: MovieEntry[];
 
-  addEntry: (entry: NewEntryInput) => void;
-  updateEntry: (id: string, partial: Partial<MovieEntry>) => void;
-  deleteEntry: (id: string) => void;
+	addEntry: (entry: NewEntryInput) => void;
+	updateEntry: (id: string, partial: Partial<MovieEntry>) => void;
+	deleteEntry: (id: string) => void;
 
-  getByCategory: (category: Category) => MovieEntry[];
-  getByGenre: (genreId: number) => MovieEntry[];
-  getStats: () => CategoryStats;
-  isDuplicate: (movieId: number) => boolean;
+	getByCategory: (category: Category) => MovieEntry[];
+	getByGenre: (genreId: number) => MovieEntry[];
+	getStats: () => CategoryStats;
+	isDuplicate: (movieId: number) => boolean;
 }
 ```
 

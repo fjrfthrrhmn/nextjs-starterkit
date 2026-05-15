@@ -39,38 +39,34 @@ const [state, setState] = React.useState(() => myExpensiveFn());
 const App = () => <Counter />;
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
+	const [count, setCount] = useState(0);
 
-  return (
-    <div>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-      <PureComponent /> // will rerender whenever "count" updates
-    </div>
-  );
+	return (
+		<div>
+			<button onClick={() => setCount(count => count + 1)}>count is {count}</button>
+			<PureComponent /> // will rerender whenever "count" updates
+		</div>
+	);
 };
 
 const PureComponent = () => <p>Pure Component</p>;
 
 // Optimized example
 const App = () => (
-  <Counter>
-    <PureComponent />
-  </Counter>
+	<Counter>
+		<PureComponent />
+	</Counter>
 );
 
 const Counter = ({ children }) => {
-  const [count, setCount] = useState(0);
+	const [count, setCount] = useState(0);
 
-  return (
-    <div>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-      {children} // won't rerender whenever "count" updates
-    </div>
-  );
+	return (
+		<div>
+			<button onClick={() => setCount(count => count + 1)}>count is {count}</button>
+			{children} // won't rerender whenever "count" updates
+		</div>
+	);
 };
 
 const PureComponent = () => <p>Pure Component</p>;

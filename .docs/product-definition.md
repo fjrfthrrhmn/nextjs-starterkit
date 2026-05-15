@@ -2,7 +2,7 @@
 
 | Field               | Description                                                                                                                        |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| **Product Name**    | FilmGueh                                                                                                                          |
+| **Product Name**    | FilmGueh                                                                                                                           |
 | **Objective**       | Membantu user mencatat, mengelola, dan memfilter film yang sudah atau ingin ditonton                                               |
 | **Target User**     | Individual user                                                                                                                    |
 | **Platform**        | Web                                                                                                                                |

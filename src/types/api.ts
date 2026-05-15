@@ -3,12 +3,12 @@
 // with the backend instead of manually writing them out
 
 export type BaseEntity = {
-  id: string;
-  createdAt: number;
+	id: string;
+	createdAt: number;
 };
 
 export type Meta = {
-  page: number;
-  total: number;
-  totalPages: number;
+	page: number;
+	total: number;
+	totalPages: number;
 };

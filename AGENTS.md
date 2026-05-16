@@ -72,17 +72,18 @@ Import graph harus tetap DAG (Directed Acyclic Graph). Tidak boleh ada:
 
 ### Naming Conventions
 
-| Entitas           | Format                 | Contoh                         |
-| ----------------- | ---------------------- | ------------------------------ |
-| Component file    | `kebab-case.tsx`       | `button.tsx`, `user-card.tsx`  |
-| Component widgets | `pascal-case.tsx`      | `Button.tsx`, `UserCard.tsx`   |
-| Props type        | `XxxProps`             | `ButtonProps`, `UserCardProps` |
-| Type/Interface    | `XxxType` / PascalCase | `UserType`, `ApiResponse`      |
-| Hook              | `use-kebab-case.ts`    | `use-debounce.ts`              |
-| Utility           | `kebab-case.ts`        | `format-date.ts`               |
-| Store             | `kebab-case.ts`        | `auth-store.ts`                |
-| API function      | `kebab-case.ts`        | `get-users.ts`                 |
-| Constants         | `UPPER_CASE`           | `MAX_RETRY_COUNT`              |
+| Entitas           | Format                 | Contoh                                 |
+| ----------------- | ---------------------- | -------------------------------------- |
+| Component file    | `kebab-case.tsx`       | `button.tsx`, `user-card.tsx`          |
+| Component widgets | `pascal-case.tsx`      | `Button.tsx`, `UserCard.tsx`           |
+| Provider          | `pascal-case.tsx`      | `ThemeProvider.tsx`, `AuthContext.tsx` |
+| Props type        | `XxxProps`             | `ButtonProps`, `UserCardProps`         |
+| Type/Interface    | `XxxType` / PascalCase | `UserType`, `ApiResponse`              |
+| Hook              | `use-kebab-case.ts`    | `use-debounce.ts`                      |
+| Utility           | `kebab-case.ts`        | `format-date.ts`                       |
+| Store             | `kebab-case.ts`        | `auth-store.ts`                        |
+| API function      | `kebab-case.ts`        | `get-users.ts`                         |
+| Constants         | `UPPER_CASE`           | `MAX_RETRY_COUNT`                      |
 
 ### Import Rules
 
@@ -153,6 +154,28 @@ Verify: [command untuk verifikasi]
 | `src/styles/`               | Styles               | Global CSS, CSS variables                 |
 | `src/i18n/`                 | Internationalization | i18n config, routing, request             |
 | `.docs/`                    | Engineering Docs     | Architecture, decisions, guides           |
+
+### `.docs/` — Engineering Documentation Center
+
+Pusat dokumentasi internal engineering dengan struktur sebagai berikut:
+
+| Sub-folder | Isi |
+|---|---|
+| `product/` | Visi produk, roadmap, user stories, feature specs |
+| `design/` | Design system, UI/UX guidelines, component patterns |
+| `technical/` | Tech stack, dependencies, konfigurasi, development setup |
+| `engineering/` | Engineering practices, code review, coding standards |
+| `architecture/` | System architecture, data flow, module boundaries |
+| `adr/` | Architecture Decision Records — keputusan arsitektur |
+| `api/` | API documentation, endpoint specs, request/response |
+| `testing/` | Testing strategy, test types, coverage goals |
+| `deployment/` | Deployment pipeline, environments, infrastructure |
+| `security/` | Security policies, auth, authorization, data protection |
+| `ai/` | AI agent collaboration guide, prompt conventions |
+| `onboarding/` | New developer onboarding, setup guide |
+| `glossary/` | Project terminology, abbreviations, definitions |
+
+Setiap sub-folder memiliki `README.md` dengan template dan panduan pengisian. Dokumentasi bersifat **living document** — update seiring perkembangan project.
 
 ## Features Structure
 

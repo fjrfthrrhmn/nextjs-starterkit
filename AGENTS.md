@@ -87,9 +87,10 @@ Import graph harus tetap DAG (Directed Acyclic Graph). Tidak boleh ada:
 
 ### Import Rules
 
-- Gunakan `@/` alias, jangan relative path (`../../`)
-- Urutan import: (1) built-in, (2) eksternal, (3) internal, (4) relative
+- Gunakan `@/` alias, jangan relative path (`../../`) kecuali di baris terakhir grup `^[./]`
+- Imports diurutkan otomatis oleh `@ianvs/prettier-plugin-sort-imports`
 - Pisahkan import type dengan `import type { ... }`
+- Setiap grup import dipisahkan baris kosong (`importOrderSeparation: true`)
 - Barrel export hanya dari `index.ts`, jangan dari file lain
 
 ### Styling
@@ -159,21 +160,21 @@ Verify: [command untuk verifikasi]
 
 Pusat dokumentasi internal engineering dengan struktur sebagai berikut:
 
-| Sub-folder | Isi |
-|---|---|
-| `product/` | Visi produk, roadmap, user stories, feature specs |
-| `design/` | Design system, UI/UX guidelines, component patterns |
-| `technical/` | Tech stack, dependencies, konfigurasi, development setup |
-| `engineering/` | Engineering practices, code review, coding standards |
-| `architecture/` | System architecture, data flow, module boundaries |
-| `adr/` | Architecture Decision Records — keputusan arsitektur |
-| `api/` | API documentation, endpoint specs, request/response |
-| `testing/` | Testing strategy, test types, coverage goals |
-| `deployment/` | Deployment pipeline, environments, infrastructure |
-| `security/` | Security policies, auth, authorization, data protection |
-| `ai/` | AI agent collaboration guide, prompt conventions |
-| `onboarding/` | New developer onboarding, setup guide |
-| `glossary/` | Project terminology, abbreviations, definitions |
+| Sub-folder      | Isi                                                      |
+| --------------- | -------------------------------------------------------- |
+| `product/`      | Visi produk, roadmap, user stories, feature specs        |
+| `design/`       | Design system, UI/UX guidelines, component patterns      |
+| `technical/`    | Tech stack, dependencies, konfigurasi, development setup |
+| `engineering/`  | Engineering practices, code review, coding standards     |
+| `architecture/` | System architecture, data flow, module boundaries        |
+| `adr/`          | Architecture Decision Records — keputusan arsitektur     |
+| `api/`          | API documentation, endpoint specs, request/response      |
+| `testing/`      | Testing strategy, test types, coverage goals             |
+| `deployment/`   | Deployment pipeline, environments, infrastructure        |
+| `security/`     | Security policies, auth, authorization, data protection  |
+| `ai/`           | AI agent collaboration guide, prompt conventions         |
+| `onboarding/`   | New developer onboarding, setup guide                    |
+| `glossary/`     | Project terminology, abbreviations, definitions          |
 
 Setiap sub-folder memiliki `README.md` dengan template dan panduan pengisian. Dokumentasi bersifat **living document** — update seiring perkembangan project.
 

@@ -7,7 +7,7 @@ import {
   I18nProvider,
   AuthProvider,
 } from "@/components/providers";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui";
 
 type ProvidersProps = {
   children: ReactNode;

@@ -1,5 +1,5 @@
 {
-	"name": "app",
+	"name": "next-app",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
@@ -10,7 +10,7 @@
 		"check-types": "tsc --noEmit",
 		"format": "prettier --check .",
 		"format:fix": "prettier --write .",
-		"test": "vitest",
+		"test": "vitest --passWithNoTests",
 		"test:run": "vitest run",
 		"test:ui": "vitest --ui",
 		"prepare": "husky"
@@ -57,6 +57,7 @@
 		"@commitlint/cli": "^21.0.1",
 		"@commitlint/config-conventional": "^21.0.1",
 		"@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+		"@rolldown/binding-win32-x64-msvc": "^1.0.1",
 		"@tailwindcss/postcss": "^4",
 		"@tanstack/react-query-devtools": "^5.100.10",
 		"@types/node": "^20",

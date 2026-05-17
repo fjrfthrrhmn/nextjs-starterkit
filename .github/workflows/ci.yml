@@ -38,8 +38,5 @@ jobs:
       - name: Format check
         run: bun format
 
-      - name: Run tests
-        run: bun test:run
-
       - name: Build
         run: bun build

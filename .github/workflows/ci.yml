@@ -32,6 +32,9 @@ jobs:
       - name: Lint
         run: bun lint
 
+      - name: Format
+        run: bun format:fix
+
       - name: Format check
         run: bun format
 

@@ -1,4 +1,4 @@
-# next-app
+# Next App
 
 Foundation project Next.js 16 dengan arsitektur Feature-Sliced Design (FSD),
 TypeScript strict, Tailwind CSS v4, dan tooling modern.

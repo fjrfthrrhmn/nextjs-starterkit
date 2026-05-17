@@ -4,6 +4,8 @@ import { fontVariables, siteMetadata } from "@/config"
 
 import "@/styles/globals.css"
 
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 import { Providers } from "./providers"
 
 export const metadata = siteMetadata
@@ -21,6 +23,7 @@ export default function RootLayout({
 		>
 			<body className="flex min-h-full flex-col">
 				<Providers>
+					<SpeedInsights />
 					{children}
 					<Toaster richColors closeButton position="top-right" />
 				</Providers>

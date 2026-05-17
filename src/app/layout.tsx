@@ -2,7 +2,7 @@ import { Toaster } from "sonner"
 
 import { fontVariables, siteMetadata } from "@/config"
 
-import "./globals.css"
+import "@/styles/globals.css"
 
 import { Providers } from "./providers"
 

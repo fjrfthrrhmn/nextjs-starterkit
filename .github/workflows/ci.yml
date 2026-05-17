@@ -39,4 +39,4 @@ jobs:
         run: bun format
 
       - name: Build
-        run: bun build
+        run: bun run build

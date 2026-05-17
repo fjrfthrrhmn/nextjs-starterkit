@@ -1,24 +1,4 @@
-export {
-  getIcon,
-  getIconBySize,
-  getIconComponent,
-  ICON_SIZES,
-  ICON_STROKE,
-  SEARCH_ICONS,
-  UI_ICONS,
-  MEDIA_ICONS,
-  ACTION_ICONS,
-  NAV_ICONS,
-  ACTION_2_ICONS,
-  COMMAND_ICONS,
-  type IconKey,
-  type IconSizeKey,
-  type IconStrokeKey,
-  type SearchIconKey,
-  type UiIconKey,
-  type MediaIconKey,
-  type ActionIconKey,
-  type NavIconKey,
-  type Action2IconKey,
-  type CommandIconKey,
-} from './icons';
+// Global constants barrel
+// Export constants saat sudah dibuat:
+// export { MAX_RETRY_COUNT, DEFAULT_PAGE_SIZE } from "./api"
+// export { EMAIL_REGEX, PASSWORD_REGEX } from "./regex"

@@ -1,40 +1,30 @@
-import type { Metadata, Viewport } from 'next';
-import { ReactNode } from 'react';
+import { Toaster } from "sonner"
 
-import { AppProvider } from '@/app/provider';
-import { AppLayout } from '@/components/layouts/app-layout';
-import { siteConfig } from '@/config/site';
-import { LanguageProvider } from '@/contexts/language-context';
+import { fontVariables, siteMetadata } from "@/config"
 
-// @ts-ignore
-import '@/styles/globals.css';
+import "@/styles/globals.css"
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  authors: [{ name: siteConfig.author }],
-};
+import { Providers } from "./providers"
 
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-};
+export const metadata = siteMetadata
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
-  return (
-    <html lang="id" className="dark">
-      <body>
-        <AppProvider>
-          <LanguageProvider>
-            <AppLayout>{children}</AppLayout>
-          </LanguageProvider>
-        </AppProvider>
-      </body>
-    </html>
-  );
-};
-
-export default RootLayout;
+export default function RootLayout({
+	children
+}: Readonly<{
+	children: React.ReactNode
+}>) {
+	return (
+		<html
+			lang="id"
+			className={`${fontVariables} h-full antialiased`}
+			suppressHydrationWarning
+		>
+			<body className="flex min-h-full flex-col">
+				<Providers>
+					{children}
+					<Toaster richColors closeButton position="top-right" />
+				</Providers>
+			</body>
+		</html>
+	)
+}

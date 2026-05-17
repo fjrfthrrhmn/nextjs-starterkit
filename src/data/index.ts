@@ -1,7 +1,5 @@
-export { type Category, categories } from './categories';
-export {
-  type Movie,
-  movies,
-  getMoviesByCategory,
-  searchMovies,
-} from './movies';
+// Static data barrel
+// Export static data saat sudah dibuat:
+// export { COUNTRIES } from "./countries"
+// export { CATEGORIES } from "./categories"
+// export { STATUS_OPTIONS } from "./status-options"
